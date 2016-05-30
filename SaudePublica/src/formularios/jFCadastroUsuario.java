@@ -27,21 +27,122 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLCadastrarUsuario = new javax.swing.JLabel();
+        jLCadastrarNome = new javax.swing.JLabel();
+        jTFCadastrarNome = new javax.swing.JTextField();
+        jLCadastrarEndereco = new javax.swing.JLabel();
+        jTFCadastraEndereco = new javax.swing.JTextField();
+        jLCadastarCidade = new javax.swing.JLabel();
+        jCBCidades = new javax.swing.JComboBox<>();
+        jBCadastrarCadastrar = new javax.swing.JButton();
+        jBCadastrarLimpar = new javax.swing.JButton();
+        jCBCadastrarUF = new javax.swing.JComboBox<>();
+        jLCadastrarUF = new javax.swing.JLabel();
+        jLCadastrarSenha = new javax.swing.JLabel();
+        jPFCadastrarSenha = new javax.swing.JPasswordField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLCadastrarUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLCadastrarUsuario.setText("Cadastrar Novo Usuário");
+
+        jLCadastrarNome.setText("Nome:");
+
+        jTFCadastrarNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFCadastrarNomeActionPerformed(evt);
+            }
+        });
+
+        jLCadastrarEndereco.setText("Endereço:");
+
+        jLCadastarCidade.setText("Cidade:");
+
+        jCBCidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jBCadastrarCadastrar.setText("Cadastrar");
+
+        jBCadastrarLimpar.setText("Limpar");
+
+        jCBCadastrarUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLCadastrarUF.setText("UF:");
+
+        jLCadastrarSenha.setText("Senha:");
+
+        jPFCadastrarSenha.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLCadastrarUsuario))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLCadastrarNome)
+                            .addComponent(jLCadastrarEndereco)
+                            .addComponent(jLCadastarCidade)
+                            .addComponent(jLCadastrarSenha))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jCBCidades, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLCadastrarUF)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCBCadastrarUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTFCadastraEndereco)
+                            .addComponent(jTFCadastrarNome)
+                            .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(89, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jBCadastrarLimpar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBCadastrarCadastrar)
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLCadastrarUsuario)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLCadastrarNome)
+                    .addComponent(jTFCadastrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLCadastrarEndereco)
+                    .addComponent(jTFCadastraEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLCadastarCidade)
+                    .addComponent(jCBCidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCBCadastrarUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLCadastrarUF))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLCadastrarSenha)
+                    .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBCadastrarCadastrar)
+                    .addComponent(jBCadastrarLimpar))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTFCadastrarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCadastrarNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFCadastrarNomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +180,18 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBCadastrarCadastrar;
+    private javax.swing.JButton jBCadastrarLimpar;
+    private javax.swing.JComboBox<String> jCBCadastrarUF;
+    private javax.swing.JComboBox<String> jCBCidades;
+    private javax.swing.JLabel jLCadastarCidade;
+    private javax.swing.JLabel jLCadastrarEndereco;
+    private javax.swing.JLabel jLCadastrarNome;
+    private javax.swing.JLabel jLCadastrarSenha;
+    private javax.swing.JLabel jLCadastrarUF;
+    private javax.swing.JLabel jLCadastrarUsuario;
+    private javax.swing.JPasswordField jPFCadastrarSenha;
+    private javax.swing.JTextField jTFCadastraEndereco;
+    private javax.swing.JTextField jTFCadastrarNome;
     // End of variables declaration//GEN-END:variables
 }
