@@ -23,14 +23,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jBCadastrarLimpar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jBCadastrarCadastrar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLCadastrarUsuario" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="jLCadastrarUsuario" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLCadastrarNome" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLCadastrarEndereco" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -46,7 +50,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jCBCadastrarUF" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jTFCadastraEndereco" max="32767" attributes="0"/>
+                          <Component id="jTFCadastrarEndereco" max="32767" attributes="0"/>
                           <Component id="jTFCadastrarNome" alignment="0" max="32767" attributes="0"/>
                           <Component id="jPFCadastrarSenha" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -54,21 +58,14 @@
               </Group>
               <EmptySpace pref="89" max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="jBCadastrarLimpar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jBCadastrarCadastrar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="jLCadastrarUsuario" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLCadastrarNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTFCadastrarNome" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -76,7 +73,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLCadastrarEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTFCadastraEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTFCadastrarEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -95,7 +92,7 @@
                   <Component id="jBCadastrarCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBCadastrarLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -124,7 +121,7 @@
         <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTFCadastraEndereco">
+    <Component class="javax.swing.JTextField" name="jTFCadastrarEndereco">
     </Component>
     <Component class="javax.swing.JLabel" name="jLCadastarCidade">
       <Properties>
@@ -155,6 +152,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Limpar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCadastrarLimparActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jCBCadastrarUF">
       <Properties>

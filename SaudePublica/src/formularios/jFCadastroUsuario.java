@@ -5,6 +5,8 @@
  */
 package formularios;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Note
@@ -31,7 +33,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         jLCadastrarNome = new javax.swing.JLabel();
         jTFCadastrarNome = new javax.swing.JTextField();
         jLCadastrarEndereco = new javax.swing.JLabel();
-        jTFCadastraEndereco = new javax.swing.JTextField();
+        jTFCadastrarEndereco = new javax.swing.JTextField();
         jLCadastarCidade = new javax.swing.JLabel();
         jCBCidades = new javax.swing.JComboBox<>();
         jBCadastrarCadastrar = new javax.swing.JButton();
@@ -63,6 +65,11 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         jBCadastrarCadastrar.setText("Cadastrar");
 
         jBCadastrarLimpar.setText("Limpar");
+        jBCadastrarLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarLimparActionPerformed(evt);
+            }
+        });
 
         jCBCadastrarUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -76,13 +83,17 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jBCadastrarLimpar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBCadastrarCadastrar)
+                .addGap(49, 49, 49))
             .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLCadastrarUsuario)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLCadastrarUsuario))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLCadastrarNome)
                             .addComponent(jLCadastrarEndereco)
@@ -96,30 +107,24 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                                 .addComponent(jLCadastrarUF)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jCBCadastrarUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTFCadastraEndereco)
+                            .addComponent(jTFCadastrarEndereco)
                             .addComponent(jTFCadastrarNome)
                             .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(89, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jBCadastrarLimpar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBCadastrarCadastrar)
-                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(36, 36, 36)
                 .addComponent(jLCadastrarUsuario)
-                .addGap(34, 34, 34)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCadastrarNome)
                     .addComponent(jTFCadastrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCadastrarEndereco)
-                    .addComponent(jTFCadastraEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFCadastrarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCadastarCidade)
@@ -134,7 +139,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBCadastrarCadastrar)
                     .addComponent(jBCadastrarLimpar))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -143,6 +148,17 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     private void jTFCadastrarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCadastrarNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFCadastrarNomeActionPerformed
+
+    private void jBCadastrarLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarLimparActionPerformed
+
+        int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja realmente limpar todos campos ?");
+
+        if (confirmacao == 0) {
+            jTFCadastrarNome.setText("");
+            jTFCadastrarEndereco.setText("");
+            jPFCadastrarSenha.setText("");
+        }
+    }//GEN-LAST:event_jBCadastrarLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,7 +207,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLCadastrarUF;
     private javax.swing.JLabel jLCadastrarUsuario;
     private javax.swing.JPasswordField jPFCadastrarSenha;
-    private javax.swing.JTextField jTFCadastraEndereco;
+    private javax.swing.JTextField jTFCadastrarEndereco;
     private javax.swing.JTextField jTFCadastrarNome;
     // End of variables declaration//GEN-END:variables
 }
