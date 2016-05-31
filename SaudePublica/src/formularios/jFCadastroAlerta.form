@@ -27,17 +27,10 @@
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLDescricaoAlerta" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLCorAlerta" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jComboCorAlerta" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLDoenca" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jComboDoenca" min="-2" pref="167" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLCorAlerta" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jComboCorAlerta" min="-2" pref="139" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLCodigoAlerta" min="-2" max="-2" attributes="0"/>
@@ -85,12 +78,7 @@
               <Component id="jLDescricaoAlerta" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLDoenca" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboDoenca" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLCorAlerta" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jComboCorAlerta" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -131,23 +119,6 @@
         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o Alerta:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLDoenca">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Doen&#xe7;a"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jComboDoenca">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLCorAlerta">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cor do Alerta"/>
@@ -169,6 +140,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCadastrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBEditar">
       <Properties>
