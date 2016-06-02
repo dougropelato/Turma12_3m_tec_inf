@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package formularios;
 
 import javax.swing.JOptionPane;
+import tabelas.Humanos;
 
 /**
  *
- * @author Note
+ * @author Jardel
  */
 public class jFCadastroUsuario extends javax.swing.JFrame {
 
@@ -42,6 +38,9 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         jLCadastrarUF = new javax.swing.JLabel();
         jLCadastrarSenha = new javax.swing.JLabel();
         jPFCadastrarSenha = new javax.swing.JPasswordField();
+        jLGenero = new javax.swing.JLabel();
+        jRBMasculino = new javax.swing.JRadioButton();
+        jRBFeminino = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +62,11 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         jCBCidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jBCadastrarCadastrar.setText("Cadastrar");
+        jBCadastrarCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarCadastrarActionPerformed(evt);
+            }
+        });
 
         jBCadastrarLimpar.setText("Limpar");
         jBCadastrarLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,45 +83,59 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
 
         jPFCadastrarSenha.setText("jPasswordField1");
 
+        jLGenero.setText("Gênero:");
+
+        jRBMasculino.setText("Masculino");
+
+        jRBFeminino.setText("Feminino");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jBCadastrarLimpar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBCadastrarCadastrar)
-                .addGap(49, 49, 49))
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLCadastrarUsuario)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLCadastrarNome)
                             .addComponent(jLCadastrarEndereco)
                             .addComponent(jLCadastarCidade)
-                            .addComponent(jLCadastrarSenha))
+                            .addComponent(jLCadastrarSenha)
+                            .addComponent(jLGenero))
                         .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jCBCidades, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jRBMasculino)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLCadastrarUF)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCBCadastrarUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTFCadastrarEndereco)
-                            .addComponent(jTFCadastrarNome)
-                            .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jRBFeminino))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jCBCidades, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLCadastrarUF)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jCBCadastrarUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTFCadastrarEndereco)
+                                .addComponent(jTFCadastrarNome))
+                            .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLCadastrarUsuario)))
                 .addContainerGap(89, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jBCadastrarLimpar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBCadastrarCadastrar)
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(22, 22, 22)
                 .addComponent(jLCadastrarUsuario)
-                .addGap(32, 32, 32)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCadastrarNome)
                     .addComponent(jTFCadastrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -133,13 +151,18 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                     .addComponent(jLCadastrarUF))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLGenero)
+                    .addComponent(jRBMasculino)
+                    .addComponent(jRBFeminino))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCadastrarSenha)
                     .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBCadastrarCadastrar)
-                    .addComponent(jBCadastrarLimpar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jBCadastrarLimpar)
+                    .addComponent(jBCadastrarCadastrar))
+                .addContainerGap())
         );
 
         pack();
@@ -159,6 +182,25 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             jPFCadastrarSenha.setText("");
         }
     }//GEN-LAST:event_jBCadastrarLimparActionPerformed
+
+    private void jBCadastrarCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarCadastrarActionPerformed
+        String gen;
+
+        if (jRBMasculino.isSelected() == true) {
+            gen = "m"; 
+        } else {
+            gen = "f"; 
+        }
+
+        Humanos usuario = new Humanos();
+
+        usuario.setNome(jTFCadastrarNome.getText());
+        usuario.setEndereco(jTFCadastrarEndereco.getText());
+        usuario.setRanking(0);
+        usuario.setGenero(gen);
+      //  usuario.setSenha(jPFCadastrarSenha.getPassword()); !!!!!!!!!!
+        
+    }//GEN-LAST:event_jBCadastrarCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,7 +248,10 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLCadastrarSenha;
     private javax.swing.JLabel jLCadastrarUF;
     private javax.swing.JLabel jLCadastrarUsuario;
+    private javax.swing.JLabel jLGenero;
     private javax.swing.JPasswordField jPFCadastrarSenha;
+    private javax.swing.JRadioButton jRBFeminino;
+    private javax.swing.JRadioButton jRBMasculino;
     private javax.swing.JTextField jTFCadastrarEndereco;
     private javax.swing.JTextField jTFCadastrarNome;
     // End of variables declaration//GEN-END:variables
