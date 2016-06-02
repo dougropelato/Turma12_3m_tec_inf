@@ -31,8 +31,6 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
         jLCodigoAlerta = new javax.swing.JLabel();
         jTFCodigoAlerta = new javax.swing.JTextField();
         jLDescricaoAlerta = new javax.swing.JLabel();
-        jLDoenca = new javax.swing.JLabel();
-        jComboDoenca = new javax.swing.JComboBox();
         jLCorAlerta = new javax.swing.JLabel();
         jComboCorAlerta = new javax.swing.JComboBox();
         jBCadastrar = new javax.swing.JButton();
@@ -53,15 +51,16 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
 
         jLDescricaoAlerta.setText("Descrição Alerta:");
 
-        jLDoenca.setText("Doença");
-
-        jComboDoenca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLCorAlerta.setText("Cor do Alerta");
 
         jComboCorAlerta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarActionPerformed(evt);
+            }
+        });
 
         jBEditar.setText("Editar");
 
@@ -81,15 +80,10 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLDescricaoAlerta)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLCorAlerta)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jComboCorAlerta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLDoenca)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jComboDoenca, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLCorAlerta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboCorAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLCodigoAlerta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -126,11 +120,7 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
                 .addComponent(jLDescricaoAlerta)
                 .addGap(3, 3, 3)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLDoenca)
-                    .addComponent(jComboDoenca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCorAlerta)
                     .addComponent(jComboCorAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,6 +135,10 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,12 +181,10 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
     private javax.swing.JButton jBExcluir;
     private javax.swing.JButton jBLimpar;
     private javax.swing.JComboBox jComboCorAlerta;
-    private javax.swing.JComboBox jComboDoenca;
     private javax.swing.JLabel jLCadastrarAlerta;
     private javax.swing.JLabel jLCodigoAlerta;
     private javax.swing.JLabel jLCorAlerta;
     private javax.swing.JLabel jLDescricaoAlerta;
-    private javax.swing.JLabel jLDoenca;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTDescricaoAlerta;
     private javax.swing.JTextField jTFCodigoAlerta;
