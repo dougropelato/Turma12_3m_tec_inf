@@ -9,7 +9,7 @@ import dao.GenericDao;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import tabelas.Estado;
+import tabelas.estado;
 
 
 /**
@@ -127,15 +127,15 @@ public class jFCadastroEstados extends javax.swing.JFrame {
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
         try {
             GenericDao inserir = new GenericDao();
-            Estado cidade = new Estado();
+            estado estado = new estado();
             
             String nome = jTNome.getText();
             String UF = jTUF.getText();
             
-            cidade.setNome_estado(nome);
-            cidade.setUF(UF);
+            estado.setNome_estado(nome);
+            estado.setUF(UF);
             
-            inserir.adicionar(cidade);
+            inserir.adicionar(estado);
            
         } catch (SQLException ex) {
             Logger.getLogger(jFCadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
