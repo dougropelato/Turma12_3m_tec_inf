@@ -9,6 +9,8 @@ import dao.GenericDao;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tabelas.Estado;
+
 
 /**
  *
@@ -125,11 +127,23 @@ public class jFCadastroEstados extends javax.swing.JFrame {
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
         try {
             GenericDao inserir = new GenericDao();
+            Estado cidade = new Estado();
             
+            String nome = jTNome.getText();
+            String UF = jTUF.getText();
             
+            cidade.setNome_estado(nome);
+            cidade.setUF(UF);
+            
+            inserir.adicionar(cidade);
+           
         } catch (SQLException ex) {
             Logger.getLogger(jFCadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(jFCadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(jFCadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
             Logger.getLogger(jFCadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
         }
         
