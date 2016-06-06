@@ -167,7 +167,9 @@ public class jFCadastroDoenças extends javax.swing.JFrame {
          }
      } catch (SQLException ex){
          System.out.println("Erro"+ex); 
-     }   
+     }  catch (ClassNotFoundException ex) {   
+            Logger.getLogger(jFCadastroDoenças.class.getName()).log(Level.SEVERE, null, ex);
+        }   
     }//GEN-LAST:event_bTcadastrarActionPerformed
 
     /**
