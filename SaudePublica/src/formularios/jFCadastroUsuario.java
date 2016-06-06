@@ -1,5 +1,9 @@
 package formularios;
 
+import dao.GenericDao;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tabelas.Humanos;
 
@@ -187,19 +191,36 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         String gen;
 
         if (jRBMasculino.isSelected() == true) {
-            gen = "m"; 
+            gen = "m";
         } else {
-            gen = "f"; 
+            gen = "f";
         }
 
-        Humanos usuario = new Humanos();
+        try {
+           
+            GenericDao gd = new GenericDao();
 
-        usuario.setNome(jTFCadastrarNome.getText());
-        usuario.setEndereco(jTFCadastrarEndereco.getText());
-        usuario.setRanking(0);
-        usuario.setGenero(gen);
-      //  usuario.setSenha(jPFCadastrarSenha.getPassword()); !!!!!!!!!!
-        
+            Humanos usuario = new Humanos();
+
+            usuario.setCod_humanos(4);
+            usuario.setNome(jTFCadastrarNome.getText());
+            usuario.setEndereco(jTFCadastrarEndereco.getText());
+            usuario.setRanking(0); // verificar
+            usuario.setGenero(gen);
+            usuario.setSenha(jPFCadastrarSenha.getText());
+            usuario.setCidade((String) jCBCidades.getSelectedItem()); // verificar
+            
+            gd.adicionar(usuario);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBCadastrarCadastrarActionPerformed
 
     /**

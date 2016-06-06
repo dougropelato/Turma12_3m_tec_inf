@@ -1,12 +1,14 @@
 package tabelas;
 
-
 public class Humanos {
+
+    private int cod_humanos;
     private String nome;
     private String endereco;
-   private int ranking;
+    private int ranking;
     private String genero;
-    private int senha;
+    private String senha;
+    private String cidade;
 
     /**
      * @return the nome
@@ -67,14 +69,42 @@ public class Humanos {
     /**
      * @return the senha
      */
-    public int getSenha() {
+    public String getSenha() {
         return senha;
     }
 
     /**
      * @param senha the senha to set
      */
-    public void setSenha(int senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    /**
+     * @return the cidade
+     */
+    public String getCidade() {
+        return cidade;
+    }
+
+    /**
+     * @param cidade the cidade to set
+     */
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    /**
+     * @return the cod_humanos
+     */
+    public int getCod_humanos() {
+        return cod_humanos;
+    }
+
+    /**
+     * @param cod_humanos the cod_humanos to set
+     */
+    public void setCod_humanos(int cod_humanos) {
+        this.cod_humanos = cod_humanos;
     }
 }
