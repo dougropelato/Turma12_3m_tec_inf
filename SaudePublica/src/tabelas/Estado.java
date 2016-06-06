@@ -9,7 +9,7 @@ package tabelas;
  *
  * @author Fernando
  */
-public class Estado {
+public class estado {
     private int cod_estado;
     private String nome_estado;
     private String UF;

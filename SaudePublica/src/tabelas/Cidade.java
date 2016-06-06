@@ -9,7 +9,7 @@ package tabelas;
  *
  * @author Fernando
  */
-public class Cidade {
+public class cidade {
     private int cod_cidade;
     private String nome_cidade;
     private int cod_estado;
