@@ -14,9 +14,7 @@ public class estado {
     private String nome_estado;
     private String UF;
 
-    /**
-     * @return the cod_estado
-     */
+   
     public int getCod_estado() {
         return cod_estado;
     }

@@ -14,9 +14,7 @@ public class cidade {
     private String nome_cidade;
     private int cod_estado;
 
-    /**
-     * @return the cod_cidade
-     */
+    
     public int getCod_cidade() {
         return cod_cidade;
     }
