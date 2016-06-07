@@ -1,11 +1,14 @@
 package formularios;
 
 import dao.GenericDao;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tabelas.Humanos;
+import tabelas.estado;
 
 /**
  *
@@ -18,6 +21,23 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
      */
     public jFCadastroUsuario() {
         initComponents();
+        try {
+            listarEstados();
+        } catch (SQLException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -197,23 +217,21 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         }
 
         try {
-           
+
             GenericDao gd = new GenericDao();
-          
+
             Humanos usuario = new Humanos();
-           
-           // usuario.setCod_humanos(8); nao precisa
-            
+
+            // usuario.setCod_humanos(8); nao precisa
             usuario.setNome(jTFCadastrarNome.getText());
             usuario.setEndereco(jTFCadastrarEndereco.getText());
             usuario.setRanking(0); // verificar
             usuario.setGenero(gen);
-           usuario.setSenha(jPFCadastrarSenha.getText());
-           usuario.setCod_cidade("1");
+            usuario.setSenha(jPFCadastrarSenha.getText());
+            usuario.setCod_cidade("1");
 
 // usuario.setCidade((String) jCBCidades.getSelectedItem()); // verificar
-            
-          gd.adicionar(usuario);
+            gd.adicionar(usuario);
 
         } catch (SQLException ex) {
             Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -223,8 +241,8 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-  } 
-        
+        }
+
     }//GEN-LAST:event_jBCadastrarCadastrarActionPerformed
 
     /**
@@ -280,4 +298,21 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTFCadastrarEndereco;
     private javax.swing.JTextField jTFCadastrarNome;
     // End of variables declaration//GEN-END:variables
+
+    public void listarEstados() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
+        jCBCidades.removeAllItems();
+
+        GenericDao gd = new GenericDao();
+        List<Object> lista = gd.listar(estado.class);
+
+        
+       
+            for (Object Estado : lista) {
+            //  String teste = lista.   encontrar metodo
+             //   jCBCidades.addItem(teste);
+            }
+         
+       
+
+    }
 }
