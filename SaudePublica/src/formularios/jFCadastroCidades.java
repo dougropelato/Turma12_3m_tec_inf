@@ -5,6 +5,14 @@
  */
 package formularios;
 
+import dao.GenericDao;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import tabelas.cidade;
+
 /**
  *
  * @author Fernando
@@ -29,7 +37,7 @@ public class jFCadastroCidades extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCEstado = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jBCadastrar = new javax.swing.JButton();
@@ -42,7 +50,12 @@ public class jFCadastroCidades extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Estado");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jCEstado.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jCEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCEstadoActionPerformed(evt);
+            }
+        });
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +89,7 @@ public class jFCadastroCidades extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField1)
-                            .addComponent(jComboBox1, 0, 238, Short.MAX_VALUE))))
+                            .addComponent(jCEstado, 0, 238, Short.MAX_VALUE))))
                 .addContainerGap(163, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -94,7 +107,7 @@ public class jFCadastroCidades extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -109,29 +122,40 @@ public class jFCadastroCidades extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
-        try {
-            GenericDao inserir = new GenericDao();
-            estado estado = new estado();
-
-            String nome = jTNome.getText();
-            String UF = jTUF.getText();
-
-            estado.setNome_estado(nome);
-            estado.setUF(UF);
-
-            inserir.adicionar(estado);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(jFCadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(jFCadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalArgumentException ex) {
-            Logger.getLogger(jFCadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(jFCadastroEstados.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
 
     }//GEN-LAST:event_jBCadastrarActionPerformed
+
+    private void jCEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCEstadoActionPerformed
+        try {
+            GenericDao dao = new GenericDao();
+            List coo = dao.listar(cidade.class);
+            
+            List<cidade> lista = coo;
+            
+            for (int i = 0; i < lista.size(); i++) {
+                cidade cidades = new cidade();
+                cidades = lista.get(i);
+               
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jCEstadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,7 +194,7 @@ public class jFCadastroCidades extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCadastrar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jCEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
