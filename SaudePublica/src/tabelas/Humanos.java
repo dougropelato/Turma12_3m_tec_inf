@@ -2,109 +2,109 @@ package tabelas;
 
 public class Humanos {
 
-    private int cod_humanos;
-    private String nome;
-    private String endereco;
-    private int ranking;
-    private String genero;
-    private String senha;
-    private String cidade;
+    private int Cod_humanos;
+    private String Nome;
+    private String Endereco;
+    private int Ranking;
+    private String Genero;
+    private String Senha;
+    private String Cod_cidade;
 
     /**
-     * @return the nome
-     */
-    public String getNome() {
-        return nome;
-    }
-
-    /**
-     * @param nome the nome to set
-     */
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    /**
-     * @return the endereco
-     */
-    public String getEndereco() {
-        return endereco;
-    }
-
-    /**
-     * @param endereco the endereco to set
-     */
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    /**
-     * @return the ranking
-     */
-    public int getRanking() {
-        return ranking;
-    }
-
-    /**
-     * @param ranking the ranking to set
-     */
-    public void setRanking(int ranking) {
-        this.ranking = ranking;
-    }
-
-    /**
-     * @return the genero
-     */
-    public String getGenero() {
-        return genero;
-    }
-
-    /**
-     * @param genero the genero to set
-     */
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    /**
-     * @return the senha
-     */
-    public String getSenha() {
-        return senha;
-    }
-
-    /**
-     * @param senha the senha to set
-     */
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    /**
-     * @return the cidade
-     */
-    public String getCidade() {
-        return cidade;
-    }
-
-    /**
-     * @param cidade the cidade to set
-     */
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    /**
-     * @return the cod_humanos
+     * @return the Cod_humanos
      */
     public int getCod_humanos() {
-        return cod_humanos;
+        return Cod_humanos;
     }
 
     /**
-     * @param cod_humanos the cod_humanos to set
+     * @param Cod_humanos the Cod_humanos to set
      */
-    public void setCod_humanos(int cod_humanos) {
-        this.cod_humanos = cod_humanos;
+    public void setCod_humanos(int Cod_humanos) {
+        this.Cod_humanos = Cod_humanos;
+    }
+
+    /**
+     * @return the Nome
+     */
+    public String getNome() {
+        return Nome;
+    }
+
+    /**
+     * @param Nome the Nome to set
+     */
+    public void setNome(String Nome) {
+        this.Nome = Nome;
+    }
+
+    /**
+     * @return the Endereco
+     */
+    public String getEndereco() {
+        return Endereco;
+    }
+
+    /**
+     * @param Endereco the Endereco to set
+     */
+    public void setEndereco(String Endereco) {
+        this.Endereco = Endereco;
+    }
+
+    /**
+     * @return the Ranking
+     */
+    public int getRanking() {
+        return Ranking;
+    }
+
+    /**
+     * @param Ranking the Ranking to set
+     */
+    public void setRanking(int Ranking) {
+        this.Ranking = Ranking;
+    }
+
+    /**
+     * @return the Genero
+     */
+    public String getGenero() {
+        return Genero;
+    }
+
+    /**
+     * @param Genero the Genero to set
+     */
+    public void setGenero(String Genero) {
+        this.Genero = Genero;
+    }
+
+    /**
+     * @return the Senha
+     */
+    public String getSenha() {
+        return Senha;
+    }
+
+    /**
+     * @param Senha the Senha to set
+     */
+    public void setSenha(String Senha) {
+        this.Senha = Senha;
+    }
+
+    /**
+     * @return the Cod_cidade
+     */
+    public String getCod_cidade() {
+        return Cod_cidade;
+    }
+
+    /**
+     * @param Cod_cidade the Cod_cidade to set
+     */
+    public void setCod_cidade(String Cod_cidade) {
+        this.Cod_cidade = Cod_cidade;
     }
 }

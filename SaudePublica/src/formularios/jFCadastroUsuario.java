@@ -199,18 +199,21 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         try {
            
             GenericDao gd = new GenericDao();
-
+          
             Humanos usuario = new Humanos();
-
-            usuario.setCod_humanos(4);
+           
+           // usuario.setCod_humanos(8);
+            
             usuario.setNome(jTFCadastrarNome.getText());
             usuario.setEndereco(jTFCadastrarEndereco.getText());
             usuario.setRanking(0); // verificar
             usuario.setGenero(gen);
-            usuario.setSenha(jPFCadastrarSenha.getText());
-            usuario.setCidade((String) jCBCidades.getSelectedItem()); // verificar
+           usuario.setSenha(jPFCadastrarSenha.getText());
+           usuario.setCod_cidade("1");
+
+// usuario.setCidade((String) jCBCidades.getSelectedItem()); // verificar
             
-            gd.adicionar(usuario);
+          gd.adicionar(usuario);
 
         } catch (SQLException ex) {
             Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -220,7 +223,8 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+  } 
+        
     }//GEN-LAST:event_jBCadastrarCadastrarActionPerformed
 
     /**
