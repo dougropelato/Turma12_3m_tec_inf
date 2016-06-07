@@ -11,8 +11,9 @@ package tabelas;
  */
 public class estado {
     private int cod_estado;
-    private String nome_estado;
     private String UF;
+    private String nome_estado;
+    
 
     /**
      * @return the cod_estado
