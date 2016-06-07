@@ -1,5 +1,5 @@
 package tabelas;
-
+// teste
 public class Humanos {
 
     private int Cod_humanos;

@@ -202,7 +202,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
           
             Humanos usuario = new Humanos();
            
-           // usuario.setCod_humanos(8);
+           // usuario.setCod_humanos(8); nao precisa
             
             usuario.setNome(jTFCadastrarNome.getText());
             usuario.setEndereco(jTFCadastrarEndereco.getText());
