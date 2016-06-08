@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import tabelas.cidade;
+import tabelas.estado;
 
 /**
  *
@@ -22,8 +23,9 @@ public class jFCadastroCidades extends javax.swing.JFrame {
     /**
      * Creates new form jFCadastroCidades
      */
-    public jFCadastroCidades() {
+    public jFCadastroCidades() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
         initComponents();
+        listarCombo();
     }
 
     /**
@@ -127,39 +129,13 @@ public class jFCadastroCidades extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jCEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCEstadoActionPerformed
-        try {
-            GenericDao dao = new GenericDao();
-            List coo = dao.listar(cidade.class);
-            
-            List<cidade> lista = coo;
-            
-            for (int i = 0; i < lista.size(); i++) {
-                cidade cidades = new cidade();
-                cidades = lista.get(i);
-               
-            }
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchMethodException ex) {
-            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalArgumentException ex) {
-            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvocationTargetException ex) {
-            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Object object = new Object(); 
+        estado estado1 = new estado();
+        object =  jCEstado.getSelectedItem();
+        
     }//GEN-LAST:event_jCEstadoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+ 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -187,7 +163,23 @@ public class jFCadastroCidades extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new jFCadastroCidades().setVisible(true);
+                try {
+                    new jFCadastroCidades().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -200,4 +192,17 @@ public class jFCadastroCidades extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+public void listarCombo() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException{
+    GenericDao Dao = new GenericDao();
+    List lista = Dao.listar(estado.class);
+    List<estado> listaEstado = lista;
+    
+    for (int i = 0; i < listaEstado.size(); i++) {
+        estado estados = listaEstado.get(i);
+        jCEstado.addItem(estados.getNome_estado());
+        
+    }
+    
+}
+
 }
