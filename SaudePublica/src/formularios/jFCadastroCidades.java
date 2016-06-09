@@ -132,7 +132,6 @@ public class jFCadastroCidades extends javax.swing.JFrame {
         Object object = new Object(); 
         estado estado1 = new estado();
         object =  jCEstado.getSelectedItem();
-        
     }//GEN-LAST:event_jCEstadoActionPerformed
 
  
