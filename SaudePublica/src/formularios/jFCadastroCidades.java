@@ -20,9 +20,10 @@ import tabelas.estado;
  */
 public class jFCadastroCidades extends javax.swing.JFrame {
 
-    /**
-     * Creates new form jFCadastroCidades
-     */
+    GenericDao Dao = new GenericDao();
+    List lista = Dao.listar(estado.class);
+    List<estado> listaEstado = lista;
+    int codigoEstado;
     public jFCadastroCidades() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
         initComponents();
         listarCombo();
@@ -40,7 +41,7 @@ public class jFCadastroCidades extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jCEstado = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        jTNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jBCadastrar = new javax.swing.JButton();
 
@@ -59,10 +60,10 @@ public class jFCadastroCidades extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTNome.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jTNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTNomeActionPerformed(evt);
             }
         });
 
@@ -90,7 +91,7 @@ public class jFCadastroCidades extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
+                            .addComponent(jTNome)
                             .addComponent(jCEstado, 0, 238, Short.MAX_VALUE))))
                 .addContainerGap(163, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -106,7 +107,7 @@ public class jFCadastroCidades extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -119,20 +120,38 @@ public class jFCadastroCidades extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTNomeActionPerformed
 
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        String nome = jTNome.getText();
+        int codigoEstado = this.codigoEstado;
         
+        cidade cid = new cidade();
+        cid.setCod_estado(codigoEstado);
+        cid.setNome_cidade(nome);
+        
+        try {
+            Dao.adicionar(cid);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(jFCadastroCidades.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jCEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCEstadoActionPerformed
-        Object object = new Object(); 
         estado estado1 = new estado();
-        object =  jCEstado.getSelectedItem();
-        
+        int index ;
+        index = jCEstado.getSelectedIndex();
+        estado1 = listaEstado.get(index);
+        codigoEstado = estado1.getCod_estado();
     }//GEN-LAST:event_jCEstadoActionPerformed
 
  
@@ -190,12 +209,10 @@ public class jFCadastroCidades extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTNome;
     // End of variables declaration//GEN-END:variables
 public void listarCombo() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException{
-    GenericDao Dao = new GenericDao();
-    List lista = Dao.listar(estado.class);
-    List<estado> listaEstado = lista;
+   
     
     for (int i = 0; i < listaEstado.size(); i++) {
         estado estados = listaEstado.get(i);
