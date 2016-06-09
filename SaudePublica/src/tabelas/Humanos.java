@@ -8,7 +8,7 @@ public class Humanos {
     private int Ranking;
     private String Genero;
     private String Senha;
-    private String Cod_cidade;
+    private int Cod_cidade;
 
     /**
      * @return the Cod_humanos
@@ -97,14 +97,19 @@ public class Humanos {
     /**
      * @return the Cod_cidade
      */
-    public String getCod_cidade() {
+    public int getCod_cidade() {
         return Cod_cidade;
     }
 
     /**
      * @param Cod_cidade the Cod_cidade to set
      */
-    public void setCod_cidade(String Cod_cidade) {
+    public void setCod_cidade(int Cod_cidade) {
         this.Cod_cidade = Cod_cidade;
     }
+
+    /**
+     * @return the Cod_cidade
+     */
+    
 }
