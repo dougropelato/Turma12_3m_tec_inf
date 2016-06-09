@@ -148,10 +148,12 @@ public class jFCadastroCidades extends javax.swing.JFrame {
 
     private void jCEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCEstadoActionPerformed
         estado estado1 = new estado();
+
         int index ;
         index = jCEstado.getSelectedIndex();
         estado1 = listaEstado.get(index);
         codigoEstado = estado1.getCod_estado();
+
     }//GEN-LAST:event_jCEstadoActionPerformed
 
  
