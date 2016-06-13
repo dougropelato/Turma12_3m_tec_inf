@@ -12,6 +12,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -29,8 +31,9 @@ import tabelas.cidade;
 public class jFGrafico extends javax.swing.JFrame {
     int numeroCidades = 2;
    
-    public jFGrafico() {
+    public jFGrafico() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
         initComponents();
+        gráfico();
     }
 
     /**
@@ -46,6 +49,8 @@ public class jFGrafico extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPGrafico.setBackground(new java.awt.Color(204, 0, 0));
+
         javax.swing.GroupLayout jPGraficoLayout = new javax.swing.GroupLayout(jPGrafico);
         jPGrafico.setLayout(jPGraficoLayout);
         jPGraficoLayout.setHorizontalGroup(
@@ -54,14 +59,14 @@ public class jFGrafico extends javax.swing.JFrame {
         );
         jPGraficoLayout.setVerticalGroup(
             jPGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 243, Short.MAX_VALUE)
+            .addGap(0, 260, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -69,9 +74,9 @@ public class jFGrafico extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(33, 33, 33)
                 .addComponent(jPGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         pack();
@@ -107,7 +112,23 @@ public class jFGrafico extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new jFGrafico().setVisible(true);
+                try {
+                    new jFGrafico().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(jFGrafico.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(jFGrafico.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(jFGrafico.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(jFGrafico.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(jFGrafico.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(jFGrafico.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(jFGrafico.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -115,7 +136,9 @@ public class jFGrafico extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPGrafico;
     // End of variables declaration//GEN-END:variables
-public void gráfico() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException{
+
+    
+    public void gráfico() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException{
     GenericDao dao = new GenericDao();
      List Teste = dao.listar(Humanos.class); // Lista criada que contem as informaçoes dos Alunos do Banco de Dados  
      
@@ -192,6 +215,7 @@ public void gráfico() throws SQLException, ClassNotFoundException, IllegalAcces
       // esse for monta o grafico
       for (int i = 0; i < ordemGrafico.size(); i++) {
           NumeroCidade teste = ordemGrafico.get(i);
+          System.out.println(teste.getNome_cidade());
           int numero = teste.getNumero();
           dataset.setValue(numero, "", teste.getNome_cidade());
           
