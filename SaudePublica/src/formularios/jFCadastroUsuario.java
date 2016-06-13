@@ -196,6 +196,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTFCadastrarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCadastrarNomeActionPerformed
@@ -234,7 +235,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             usuario.setRanking(0); // verificar
             usuario.setGenero(gen);
             usuario.setSenha(jPFCadastrarSenha.getText());
-            usuario.setCod_cidade("1");
+            usuario.setCod_cidade(1);
 
 // usuario.setCidade((String) jCBCidades.getSelectedItem()); // verificar
             gd.adicionar(usuario);
@@ -252,53 +253,51 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCadastrarCadastrarActionPerformed
 
     private void jCBEstadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEstadosActionPerformed
-       if(jCBEstados.getSelectedItem() != null){
-        
-       int pos = (jCBEstados.getSelectedIndex() + 1);
-        
-        
-       jCBCidades.removeAllItems();
+        if (jCBEstados.getSelectedItem() != null) {
 
-        GenericDao dao;
-           try {
-               dao = new GenericDao();
-          
-           List cid = dao.listar(cidade.class);
-
-        List<cidade> lista = cid;
-
-        for (int i = 0; i < lista.size(); i++) {
-
-            cidade cidadee = new cidade();
-            cidadee = lista.get(i);
-           if(cidadee.getCod_cidade() == pos){
-            jCBCidades.addItem(cidadee.getNome_cidade());
-        }
-        }
+            int pos = (jCBEstados.getSelectedIndex() + 1);
            
-           } catch (SQLException ex) {
-               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (ClassNotFoundException ex) {
-               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (IllegalAccessException ex) {
-               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (NoSuchMethodException ex) {
-               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (IllegalArgumentException ex) {
-               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (InvocationTargetException ex) {
-               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-           } catch (InstantiationException ex) {
-               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-           }
-        
-       
-       
-       // System.out.println("pos: "+ jCBEstados.getSelectedIndex());
-        
-       
-       }
-       
+            jCBCidades.removeAllItems();
+
+            GenericDao dao;
+            try {
+                dao = new GenericDao();
+
+                List cid = dao.listar(cidade.class);
+
+                List<cidade> lista = cid;
+
+                for (int i = 0; i < lista.size(); i++) {
+
+                    cidade cidadee = new cidade();
+                    cidadee = lista.get(i);
+                   
+                    
+                    
+                    if (cidadee.getCod_estado() == pos) {
+                        jCBCidades.addItem(cidadee.getNome_cidade());
+                    }
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            // System.out.println("pos: "+ jCBEstados.getSelectedIndex());
+        }
+
     }//GEN-LAST:event_jCBEstadosActionPerformed
 
     /**
