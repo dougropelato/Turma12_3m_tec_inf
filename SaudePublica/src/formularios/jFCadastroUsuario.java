@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tabelas.Humanos;
+import tabelas.cidade;
 import tabelas.estado;
 
 /**
@@ -58,7 +59,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         jCBCidades = new javax.swing.JComboBox<>();
         jBCadastrarCadastrar = new javax.swing.JButton();
         jBCadastrarLimpar = new javax.swing.JButton();
-        jCBCadastrarUF = new javax.swing.JComboBox<>();
+        jCBEstados = new javax.swing.JComboBox<>();
         jLCadastrarUF = new javax.swing.JLabel();
         jLCadastrarSenha = new javax.swing.JLabel();
         jPFCadastrarSenha = new javax.swing.JPasswordField();
@@ -99,7 +100,12 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        jCBCadastrarUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBEstados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBEstados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBEstadosActionPerformed(evt);
+            }
+        });
 
         jLCadastrarUF.setText("UF:");
 
@@ -139,7 +145,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addComponent(jLCadastrarUF)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jCBCadastrarUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jCBEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jTFCadastrarEndereco)
                                 .addComponent(jTFCadastrarNome))
                             .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -171,7 +177,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCadastarCidade)
                     .addComponent(jCBCidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCBCadastrarUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCBEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLCadastrarUF))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -245,6 +251,56 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jBCadastrarCadastrarActionPerformed
 
+    private void jCBEstadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEstadosActionPerformed
+       if(jCBEstados.getSelectedItem() != null){
+        
+       int pos = (jCBEstados.getSelectedIndex() + 1);
+        
+        
+       jCBCidades.removeAllItems();
+
+        GenericDao dao;
+           try {
+               dao = new GenericDao();
+          
+           List cid = dao.listar(cidade.class);
+
+        List<cidade> lista = cid;
+
+        for (int i = 0; i < lista.size(); i++) {
+
+            cidade cidadee = new cidade();
+            cidadee = lista.get(i);
+           if(cidadee.getCod_cidade() == pos){
+            jCBCidades.addItem(cidadee.getNome_cidade());
+        }
+        }
+           
+           } catch (SQLException ex) {
+               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (ClassNotFoundException ex) {
+               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (IllegalAccessException ex) {
+               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (NoSuchMethodException ex) {
+               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (IllegalArgumentException ex) {
+               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (InvocationTargetException ex) {
+               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (InstantiationException ex) {
+               Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+           }
+        
+       
+       
+       // System.out.println("pos: "+ jCBEstados.getSelectedIndex());
+        
+       
+       }
+       
+    }//GEN-LAST:event_jCBEstadosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -283,8 +339,8 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCadastrarCadastrar;
     private javax.swing.JButton jBCadastrarLimpar;
-    private javax.swing.JComboBox<String> jCBCadastrarUF;
     private javax.swing.JComboBox<String> jCBCidades;
+    private javax.swing.JComboBox<String> jCBEstados;
     private javax.swing.JLabel jLCadastarCidade;
     private javax.swing.JLabel jLCadastrarEndereco;
     private javax.swing.JLabel jLCadastrarNome;
@@ -300,19 +356,18 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void listarEstados() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
-        jCBCidades.removeAllItems();
+        jCBEstados.removeAllItems();
 
-        GenericDao gd = new GenericDao();
-        List<Object> lista = gd.listar(estado.class);
+        GenericDao dao = new GenericDao();
+        List est = dao.listar(estado.class);
 
-        
-       
-            for (Object Estado : lista) {
-            //  String teste = lista.   encontrar metodo
-             //   jCBCidades.addItem(teste);
-            }
-         
-       
+        List<estado> lista = est;
 
+        for (int i = 0; i < lista.size(); i++) {
+
+            estado estadoo = new estado();
+            estadoo = lista.get(i);
+            jCBEstados.addItem(estadoo.getUF());
+        }
     }
 }
