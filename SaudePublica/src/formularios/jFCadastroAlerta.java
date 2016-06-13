@@ -41,7 +41,6 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
         jComboCorAlerta = new javax.swing.JComboBox();
         jBCadastrar = new javax.swing.JButton();
         jBEditar = new javax.swing.JButton();
-        jBExcluir = new javax.swing.JButton();
         jBLimpar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTDescricaoAlerta = new javax.swing.JTextArea();
@@ -59,7 +58,12 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
 
         jLCorAlerta.setText("Cor do Alerta");
 
-        jComboCorAlerta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboCorAlerta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vermelho", "Amarelo", "Verde" }));
+        jComboCorAlerta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboCorAlertaActionPerformed(evt);
+            }
+        });
 
         jBCadastrar.setText("Cadastrar");
         jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -70,9 +74,12 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
 
         jBEditar.setText("Editar");
 
-        jBExcluir.setText("Excluir");
-
         jBLimpar.setText("Limpar");
+        jBLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimparActionPerformed(evt);
+            }
+        });
 
         jTDescricaoAlerta.setColumns(20);
         jTDescricaoAlerta.setRows(5);
@@ -83,35 +90,33 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLDescricaoAlerta)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLCorAlerta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboCorAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLCodigoAlerta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLCadastrarAlerta)
-                            .addComponent(jTFCodigoAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(91, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(jBEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBLimpar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBCadastrar)
+                .addGap(31, 31, 31))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(13, Short.MAX_VALUE)
-                        .addComponent(jBLimpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBCadastrar)))
-                .addGap(22, 22, 22))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLDescricaoAlerta)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLCodigoAlerta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLCadastrarAlerta)
+                                    .addComponent(jTFCodigoAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLCorAlerta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboCorAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,21 +139,26 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBCadastrar)
                     .addComponent(jBEditar)
-                    .addComponent(jBExcluir)
                     .addComponent(jBLimpar))
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
         try {
             GenericDao d = new GenericDao();
             Alertas a = new Alertas();
+           
+            String aDescricao = jTDescricaoAlerta.getText();
+            String aCor_alerta = (String) jComboCorAlerta.getSelectedItem();
             
-            a.setDescricao("Teste");
-            a.setCor_alerta("Teste");
+            
+            
+            a.setDescricao(aDescricao);
+            a.setCor_alerta(aCor_alerta);
             
             try {
                 d.adicionar(a);
@@ -163,6 +173,15 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
             Logger.getLogger(jFCadastroAlerta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBCadastrarActionPerformed
+
+    private void jBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimparActionPerformed
+        jTDescricaoAlerta.setText("");
+        
+    }//GEN-LAST:event_jBLimparActionPerformed
+
+    private void jComboCorAlertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboCorAlertaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboCorAlertaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,7 +221,6 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBEditar;
-    private javax.swing.JButton jBExcluir;
     private javax.swing.JButton jBLimpar;
     private javax.swing.JComboBox jComboCorAlerta;
     private javax.swing.JLabel jLCadastrarAlerta;
