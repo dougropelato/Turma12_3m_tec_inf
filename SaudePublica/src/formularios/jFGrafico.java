@@ -6,10 +6,18 @@
 package formularios;
 
 import dao.GenericDao;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import tabelas.Humanos;
 import tabelas.NumeroCidade;
 import tabelas.cidade;
@@ -192,13 +200,13 @@ public void gráfico() throws SQLException, ClassNotFoundException, IllegalAcces
         catPlot.setRangeGridlinePaint(Color.BLACK);
         
         ChartPanel qualquercoisa = new ChartPanel(chart);
-        painel.removeAll();
-        painel.add(qualquercoisa, BorderLayout.CENTER);
-        painel.validate();
+        jPGrafico.removeAll();
+        jPGrafico.add(qualquercoisa, BorderLayout.CENTER);
+        jPGrafico.validate();
     }
 }
 
     
 }
 
-}
+
