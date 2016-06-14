@@ -44,6 +44,7 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
         jBLimpar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTDescricaoAlerta = new javax.swing.JTextArea();
+        jBAlertasCadastrados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,12 +86,19 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
         jTDescricaoAlerta.setRows(5);
         jScrollPane1.setViewportView(jTDescricaoAlerta);
 
+        jBAlertasCadastrados.setText("Alertas Cadastrados");
+        jBAlertasCadastrados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlertasCadastradosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBEditar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBLimpar)
@@ -110,8 +118,13 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
                                 .addComponent(jLCodigoAlerta)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLCadastrarAlerta)
-                                    .addComponent(jTFCodigoAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLCadastrarAlerta)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTFCodigoAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jBAlertasCadastrados))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLCorAlerta)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -126,7 +139,8 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCodigoAlerta)
-                    .addComponent(jTFCodigoAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFCodigoAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBAlertasCadastrados))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLDescricaoAlerta)
                 .addGap(3, 3, 3)
@@ -135,7 +149,7 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboCorAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLCorAlerta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBCadastrar)
                     .addComponent(jBEditar)
@@ -183,6 +197,10 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboCorAlertaActionPerformed
 
+    private void jBAlertasCadastradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlertasCadastradosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBAlertasCadastradosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -219,6 +237,7 @@ public class jFCadastroAlerta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAlertasCadastrados;
     private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBEditar;
     private javax.swing.JButton jBLimpar;
