@@ -16,6 +16,9 @@ import tabelas.Doencas;
 import tabelas.Humanos;
 import tabelas.cidade;
 import tabelas.estado;
+import tabelas.historico_avaliacao;
+import tabelas.sintomas;
+import tabelas.unidade_de_saude;
 
 /**
  *
@@ -338,29 +341,39 @@ public void consulta() throws SQLException, ClassNotFoundException, IllegalAcces
     GenericDao consulta = new GenericDao();
     
     List doencalista = consulta.listar(Doencas.class);
-    List estadolista = consulta.listar(estado.class);
+    List sintomalista = consulta.listar(sintomas.class);
     List cidadelista = consulta.listar(cidade.class);
+    List estadolista = consulta.listar(estado.class);
     List humanoslista = consulta.listar(Humanos.class);
     List alertaslista = consulta.listar(Alertas.class);
+    List unidsaudelista = consulta.listar(unidade_de_saude.class);
+    List avaliacaolista = consulta.listar(historico_avaliacao.class);
 
     doenca = doencalista.size();
-    estado = estadolista.size();
+    sintoma = sintomalista.size();
     cidade = cidadelista.size();
+    estado = estadolista.size();
     humano = humanoslista.size();
     alerta = alertaslista.size();
+    unidsaude = unidsaudelista.size();
+    avaliacao = avaliacaolista.size();
     
     String doenca2 = Integer.toString(doenca);
-    String estado2 = Integer.toString(estado);
+    String sintoma2 = Integer.toString(sintoma);
     String cidade2 = Integer.toString(cidade);
+    String estado2 = Integer.toString(estado);
     String humano2 = Integer.toString(humano);
     String alerta2 = Integer.toString(alerta);
+    String unidsaude2 = Integer.toString(unidsaude);
+    String avaliacao2 = Integer.toString(avaliacao);
     
     jTdoenca.setText(doenca2);
-    jTestado.setText(estado2);
+    jTsintoma.setText(sintoma2);
     jTcidade.setText(cidade2);
+    jTestado.setText(estado2);
     jTusuario.setText(humano2);
     jTalerta.setText(alerta2);
-    
-    
+    jTunidsaude.setText(unidsaude2);
+    jTavaliacao.setText(avaliacao2);
 }
 }
