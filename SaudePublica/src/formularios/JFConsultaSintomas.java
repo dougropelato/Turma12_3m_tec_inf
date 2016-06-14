@@ -15,17 +15,18 @@ import tabelas.sintomas;
  * @author User
  */
 public class JFConsultaSintomas extends javax.swing.JFrame {
-DefaultTableModel dtmTabela = new DefaultTableModel(null, new String[]{"Codigo", "Nome","Descricao"});
+DefaultTableModel dtmTabela = new DefaultTableModel(null, new String[]{"Codigo", "Nome",});
     /**
      * Creates new form JFConsultaSintomas
      */
-    public JFConsultaSintomas(List<Object> lista) {
+    public JFConsultaSintomas() {
         initComponents();
-        montaTabela(lista);
+       
     }
 
-    private JFConsultaSintomas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private JFConsultaSintomas(List<Object> lista) {
+       initComponents();
+        montaTabela(lista);
     }
 
     /**
@@ -163,7 +164,7 @@ DefaultTableModel dtmTabela = new DefaultTableModel(null, new String[]{"Codigo",
                  sintomas pe = (sintomas) lista.get(i);
                 dtmTabela.setValueAt(pe.getCod_sintoma(), i, 0);
                 dtmTabela.setValueAt(pe.getNome_sintoma(), i, 1);
-                dtmTabela.setValueAt(pe.getDescricao(), i, 2);
+                //dtmTabela.setValueAt(pe.getDescricao(), i, 2);
             }
             jTConsulta.setModel(dtmTabela);
         }
