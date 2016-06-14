@@ -16,6 +16,9 @@ import tabelas.Doencas;
 import tabelas.Humanos;
 import tabelas.cidade;
 import tabelas.estado;
+import tabelas.historico_avaliacao;
+import tabelas.sintomas;
+import tabelas.unidade_de_saude;
 
 /**
  *
@@ -90,24 +93,44 @@ public class jFRelatorio extends javax.swing.JFrame {
             }
         });
 
+        jTdoenca.setEnabled(false);
         jTdoenca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTdoencaActionPerformed(evt);
             }
         });
 
+        jTcidade.setEditable(false);
+        jTcidade.setEnabled(false);
         jTcidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTcidadeActionPerformed(evt);
             }
         });
 
+        jTsintoma.setEditable(false);
+        jTsintoma.setEnabled(false);
+
+        jTestado.setEditable(false);
+        jTestado.setEnabled(false);
+        jTestado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTestadoActionPerformed(evt);
+            }
+        });
+
+        jTusuario.setEnabled(false);
+
+        jTunidsaude.setEnabled(false);
         jTunidsaude.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTunidsaudeActionPerformed(evt);
             }
         });
 
+        jTalerta.setEnabled(false);
+
+        jTavaliacao.setEnabled(false);
         jTavaliacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTavaliacaoActionPerformed(evt);
@@ -122,7 +145,7 @@ public class jFRelatorio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 65, Short.MAX_VALUE)
+                        .addGap(0, 43, Short.MAX_VALUE)
                         .addComponent(jLabel9)
                         .addGap(99, 99, 99))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -189,7 +212,7 @@ public class jFRelatorio extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jTavaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -198,7 +221,7 @@ public class jFRelatorio extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(34, 34, 34)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -207,30 +230,14 @@ public class jFRelatorio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(36, 36, 36))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            consulta();
-        } catch (SQLException ex) {
-            Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchMethodException ex) {
-            Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalArgumentException ex) {
-            Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvocationTargetException ex) {
-            Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTcidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTcidadeActionPerformed
@@ -248,6 +255,10 @@ public class jFRelatorio extends javax.swing.JFrame {
     private void jTavaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTavaliacaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTavaliacaoActionPerformed
+
+    private void jTestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTestadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTestadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,7 +290,23 @@ public class jFRelatorio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new jFRelatorio().setVisible(true);
+                try {
+                    new jFRelatorio().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(jFRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -310,20 +337,43 @@ public void consulta() throws SQLException, ClassNotFoundException, IllegalAcces
     
     int doenca, sintoma, cidade, estado, humano, alerta, unidsaude, avaliacao;
     
+    
     GenericDao consulta = new GenericDao();
+    
     List doencalista = consulta.listar(Doencas.class);
-    List estadolista = consulta.listar(estado.class);
+    List sintomalista = consulta.listar(sintomas.class);
     List cidadelista = consulta.listar(cidade.class);
+    List estadolista = consulta.listar(estado.class);
     List humanoslista = consulta.listar(Humanos.class);
     List alertaslista = consulta.listar(Alertas.class);
+    List unidsaudelista = consulta.listar(unidade_de_saude.class);
+    List avaliacaolista = consulta.listar(historico_avaliacao.class);
 
     doenca = doencalista.size();
-    estado = estadolista.size();
+    sintoma = sintomalista.size();
     cidade = cidadelista.size();
+    estado = estadolista.size();
     humano = humanoslista.size();
     alerta = alertaslista.size();
+    unidsaude = unidsaudelista.size();
+    avaliacao = avaliacaolista.size();
     
-    jTdoenca.setText((String)doenca);
-} 
-
+    String doenca2 = Integer.toString(doenca);
+    String sintoma2 = Integer.toString(sintoma);
+    String cidade2 = Integer.toString(cidade);
+    String estado2 = Integer.toString(estado);
+    String humano2 = Integer.toString(humano);
+    String alerta2 = Integer.toString(alerta);
+    String unidsaude2 = Integer.toString(unidsaude);
+    String avaliacao2 = Integer.toString(avaliacao);
+    
+    jTdoenca.setText(doenca2);
+    jTsintoma.setText(sintoma2);
+    jTcidade.setText(cidade2);
+    jTestado.setText(estado2);
+    jTusuario.setText(humano2);
+    jTalerta.setText(alerta2);
+    jTunidsaude.setText(unidsaude2);
+    jTavaliacao.setText(avaliacao2);
+}
 }

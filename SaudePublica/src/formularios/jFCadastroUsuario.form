@@ -52,7 +52,7 @@
                               <Component id="jTFCadastrarEndereco" max="32767" attributes="0"/>
                               <Component id="jTFCadastrarNome" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jPFCadastrarSenha" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPFCadastrarSenha" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -205,9 +205,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPFCadastrarSenha">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLGenero">
       <Properties>

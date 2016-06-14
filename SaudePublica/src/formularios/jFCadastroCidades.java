@@ -68,7 +68,7 @@ public class jFCadastroCidades extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel3.setText("Cadastro de Estados");
+        jLabel3.setText("Cadastro de Cidades");
 
         jBCadastrar.setText("Cadastrar");
         jBCadastrar.addActionListener(new java.awt.event.ActionListener() {

@@ -17,6 +17,8 @@ import tabelas.estado;
  */
 public class jFCadastroUsuario extends javax.swing.JFrame {
 
+    int retorno = 0;
+
     /**
      * Creates new form jFCadastroUsuario
      */
@@ -111,8 +113,6 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
 
         jLCadastrarSenha.setText("Senha:");
 
-        jPFCadastrarSenha.setText("jPasswordField1");
-
         jLGenero.setText("Gênero:");
 
         jRBMasculino.setText("Masculino");
@@ -148,7 +148,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                                     .addComponent(jCBEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jTFCadastrarEndereco)
                                 .addComponent(jTFCadastrarNome))
-                            .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jLCadastrarUsuario)))
@@ -235,9 +235,11 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             usuario.setRanking(0); // verificar
             usuario.setGenero(gen);
             usuario.setSenha(jPFCadastrarSenha.getText());
-            usuario.setCod_cidade(1);
 
-// usuario.setCidade((String) jCBCidades.getSelectedItem()); // verificar
+            String nome_cf = String.valueOf(jCBCidades.getSelectedItem());
+
+            usuario.setCod_cidade(buscarCodCidade(nome_cf));
+
             gd.adicionar(usuario);
 
         } catch (SQLException ex) {
@@ -248,6 +250,12 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jBCadastrarCadastrarActionPerformed
@@ -256,7 +264,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         if (jCBEstados.getSelectedItem() != null) {
 
             int pos = (jCBEstados.getSelectedIndex() + 1);
-           
+
             jCBCidades.removeAllItems();
 
             GenericDao dao;
@@ -271,9 +279,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
 
                     cidade cidadee = new cidade();
                     cidadee = lista.get(i);
-                   
-                    
-                    
+
                     if (cidadee.getCod_estado() == pos) {
                         jCBCidades.addItem(cidadee.getNome_cidade());
                     }
@@ -294,8 +300,6 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             } catch (InstantiationException ex) {
                 Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            // System.out.println("pos: "+ jCBEstados.getSelectedIndex());
         }
 
     }//GEN-LAST:event_jCBEstadosActionPerformed
@@ -368,5 +372,32 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             estadoo = lista.get(i);
             jCBEstados.addItem(estadoo.getUF());
         }
+    }
+
+    public int buscarCodCidade(String nc) throws IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
+
+        GenericDao dao;
+        try {
+            dao = new GenericDao();
+
+            List cid = dao.listar(cidade.class);
+
+            List<cidade> lista = cid;
+
+            for (int i = 0; i < lista.size(); i++) {
+                cidade cidf = new cidade();
+                cidf = lista.get(i);
+                String nome_cidade = cidf.getNome_cidade();
+
+                if (nome_cidade.equals(nc)) {
+                    retorno = cidf.getCod_cidade();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
     }
 }
