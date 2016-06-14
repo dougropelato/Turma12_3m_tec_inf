@@ -49,34 +49,34 @@ public class jFGrafico extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPGrafico.setBackground(new java.awt.Color(204, 0, 0));
+        jPGrafico.setBackground(new java.awt.Color(255, 51, 204));
 
         javax.swing.GroupLayout jPGraficoLayout = new javax.swing.GroupLayout(jPGrafico);
         jPGrafico.setLayout(jPGraficoLayout);
         jPGraficoLayout.setHorizontalGroup(
             jPGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 678, Short.MAX_VALUE)
+            .addGap(0, 127, Short.MAX_VALUE)
         );
         jPGraficoLayout.setVerticalGroup(
             jPGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 260, Short.MAX_VALUE)
+            .addGap(0, 116, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(261, 261, 261)
+                .addComponent(jPGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(310, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(39, 39, 39)
                 .addComponent(jPGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         pack();
@@ -184,7 +184,7 @@ public class jFGrafico extends javax.swing.JFrame {
            contagemCidades.add(numero);                                              
     }
      
-     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+  
      
      // esse for tem como objetivo colocar as cidades em sequencia da maior para a menor no grafico 
       for (int s = 0; s < numeroCidades; s++) { //  esse for define quantas cidades irao estar no  grafico
@@ -212,12 +212,15 @@ public class jFGrafico extends javax.swing.JFrame {
             teste= contagemCidades.get(pegarLinha);
             ordemGrafico.add(teste);
       }
+      
+       DefaultCategoryDataset dataset = new DefaultCategoryDataset();
       // esse for monta o grafico
       for (int i = 0; i < ordemGrafico.size(); i++) {
           NumeroCidade teste = ordemGrafico.get(i);
           System.out.println(teste.getNome_cidade());
           int numero = teste.getNumero();
           dataset.setValue(numero, "", teste.getNome_cidade());
+          System.out.println("testeeeeee");
           
            JFreeChart chart = ChartFactory.createBarChart("grafico", "", "", dataset, PlotOrientation.VERTICAL, false, false, false);
         CategoryPlot catPlot = chart.getCategoryPlot();
