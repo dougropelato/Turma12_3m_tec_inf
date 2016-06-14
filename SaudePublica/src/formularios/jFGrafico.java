@@ -29,7 +29,7 @@ import tabelas.cidade;
  * @author Fernando
  */
 public class jFGrafico extends javax.swing.JFrame {
-    int numeroCidades = 2;
+    int numeroCidades = 5;
    
     public jFGrafico() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
         initComponents();
@@ -47,6 +47,7 @@ public class jFGrafico extends javax.swing.JFrame {
     private void initComponents() {
 
         jPGrafico = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,32 +57,50 @@ public class jFGrafico extends javax.swing.JFrame {
         jPGrafico.setLayout(jPGraficoLayout);
         jPGraficoLayout.setHorizontalGroup(
             jPGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 352, Short.MAX_VALUE)
+            .addGap(0, 572, Short.MAX_VALUE)
         );
         jPGraficoLayout.setVerticalGroup(
             jPGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 256, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
+
+        jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(163, 163, 163)
+                .addGap(63, 63, 63)
                 .addComponent(jPGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(305, 305, 305))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(29, 29, 29)
                 .addComponent(jPGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new jFRelatorioseGraficos().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,6 +154,7 @@ public class jFGrafico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPGrafico;
     // End of variables declaration//GEN-END:variables
 

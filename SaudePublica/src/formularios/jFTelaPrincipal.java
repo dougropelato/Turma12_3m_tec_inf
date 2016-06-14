@@ -42,6 +42,11 @@ public class jFTelaPrincipal extends javax.swing.JFrame {
         jButton1.setText("Mapa");
 
         jButton2.setText("Relatório");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Prognóstico");
 
@@ -122,6 +127,11 @@ public class jFTelaPrincipal extends javax.swing.JFrame {
         new jFUnidadeSaude().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new jFRelatorioseGraficos().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
