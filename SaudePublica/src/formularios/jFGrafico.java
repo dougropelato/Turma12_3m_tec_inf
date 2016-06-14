@@ -56,11 +56,11 @@ public class jFGrafico extends javax.swing.JFrame {
         jPGrafico.setLayout(jPGraficoLayout);
         jPGraficoLayout.setHorizontalGroup(
             jPGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 127, Short.MAX_VALUE)
+            .addGap(0, 352, Short.MAX_VALUE)
         );
         jPGraficoLayout.setVerticalGroup(
             jPGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 116, Short.MAX_VALUE)
+            .addGap(0, 256, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -68,16 +68,16 @@ public class jFGrafico extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(261, 261, 261)
+                .addGap(163, 163, 163)
                 .addComponent(jPGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(310, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jPGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
@@ -228,9 +228,12 @@ public class jFGrafico extends javax.swing.JFrame {
         catPlot.setRangeGridlinePaint(Color.BLACK);
         
         ChartPanel qualquercoisa = new ChartPanel(chart);
+        qualquercoisa.setSize(jPGrafico.getWidth(),jPGrafico.getHeight());
+        qualquercoisa.setVisible(true);
         jPGrafico.removeAll();
         jPGrafico.add(qualquercoisa, BorderLayout.CENTER);
-        jPGrafico.validate();
+        jPGrafico.revalidate();
+        jPGrafico.repaint();
     }
 }
 
