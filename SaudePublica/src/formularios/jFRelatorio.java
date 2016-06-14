@@ -32,6 +32,7 @@ public class jFRelatorio extends javax.swing.JFrame {
     public jFRelatorio() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
         initComponents();
         consulta();
+        this.setLocationRelativeTo(this);
     }
 
     /**

@@ -34,6 +34,7 @@ public class jFGrafico extends javax.swing.JFrame {
     public jFGrafico() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
         initComponents();
         gráfico();
+        this.setLocationRelativeTo(this);
     }
 
     /**
