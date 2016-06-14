@@ -211,51 +211,67 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             jTFCadastrarNome.setText("");
             jTFCadastrarEndereco.setText("");
             jPFCadastrarSenha.setText("");
+            jRBMasculino.setSelected(false);
+            jRBFeminino.setSelected(false);
         }
     }//GEN-LAST:event_jBCadastrarLimparActionPerformed
 
     private void jBCadastrarCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarCadastrarActionPerformed
         String gen;
 
-        if (jRBMasculino.isSelected() == true) {
-            gen = "m";
+        if (jRBMasculino.isSelected() == true || jRBFeminino.isSelected() == true) {
+
+            if (jRBMasculino.isSelected() == true) {
+                gen = "m";
+            } else {
+                gen = "f";
+            }
         } else {
-            gen = "f";
+            gen = "na";
         }
 
-        try {
+        String conf_nome = jTFCadastrarNome.getText();
+        String conf_ende = jTFCadastrarEndereco.getText();
+        String conf_senha = jPFCadastrarSenha.getText();
 
-            GenericDao gd = new GenericDao();
+        if ((!conf_nome.equals("")) && (!conf_ende.equals("")) && (!conf_senha.equals("")) && (!gen.equals("na"))) {
 
-            Humanos usuario = new Humanos();
+            try {
 
-            // usuario.setCod_humanos(8); nao precisa
-            usuario.setNome(jTFCadastrarNome.getText());
-            usuario.setEndereco(jTFCadastrarEndereco.getText());
-            usuario.setRanking(0); // verificar
-            usuario.setGenero(gen);
-            usuario.setSenha(jPFCadastrarSenha.getText());
+                GenericDao gd = new GenericDao();
 
-            String nome_cf = String.valueOf(jCBCidades.getSelectedItem());
+                Humanos usuario = new Humanos();
 
-            usuario.setCod_cidade(buscarCodCidade(nome_cf));
+                // usuario.setCod_humanos(8); nao precisa
+                usuario.setNome(jTFCadastrarNome.getText());
+                usuario.setEndereco(jTFCadastrarEndereco.getText());
+                usuario.setRanking(0); // verificar
+                usuario.setGenero(gen);
+                usuario.setSenha(jPFCadastrarSenha.getText());
 
-            gd.adicionar(usuario);
+                String nome_cf = String.valueOf(jCBCidades.getSelectedItem());
 
-        } catch (SQLException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalArgumentException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchMethodException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvocationTargetException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                usuario.setCod_cidade(buscarCodCidade(nome_cf));
+
+                gd.adicionar(usuario);
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso !");
+            } catch (SQLException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos !");
         }
 
     }//GEN-LAST:event_jBCadastrarCadastrarActionPerformed
@@ -400,4 +416,5 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         }
         return retorno;
     }
+
 }
