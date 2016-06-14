@@ -87,7 +87,7 @@ public class jFRelatorio extends javax.swing.JFrame {
 
         jLabel9.setText("Informações gerais do sistema");
 
-        jButton1.setText("OK");
+        jButton1.setText("Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -238,6 +238,7 @@ public class jFRelatorio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new jFRelatorioseGraficos().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
