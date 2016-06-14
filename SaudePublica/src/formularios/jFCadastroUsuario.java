@@ -238,6 +238,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
 
             try {
 
+                
                 GenericDao gd = new GenericDao();
 
                 Humanos usuario = new Humanos();
@@ -254,6 +255,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                 usuario.setCod_cidade(buscarCodCidade(nome_cf));
 
                 gd.adicionar(usuario);
+                
                 JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso !");
             } catch (SQLException ex) {
                 Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
