@@ -9,6 +9,9 @@ import dao.GenericDao;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import tabelas.Alertas;
 
 /**
@@ -20,8 +23,9 @@ public class jFAlertasCadastrados extends javax.swing.JFrame {
     /**
      * Creates new form jFAlertasCadastrados
      */
-    public jFAlertasCadastrados() {
+    public jFAlertasCadastrados() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
         initComponents();
+        listarAlertas();
     }
 
     /**
@@ -40,13 +44,10 @@ public class jFAlertasCadastrados extends javax.swing.JFrame {
 
         jTableAlertas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Título 1", "Título 2", "Título 3"
             }
         ));
         jScrollPane1.setViewportView(jTableAlertas);
@@ -101,7 +102,23 @@ public class jFAlertasCadastrados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new jFAlertasCadastrados().setVisible(true);
+                try {
+                    new jFAlertasCadastrados().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(jFAlertasCadastrados.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(jFAlertasCadastrados.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(jFAlertasCadastrados.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(jFAlertasCadastrados.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(jFAlertasCadastrados.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(jFAlertasCadastrados.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(jFAlertasCadastrados.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -110,22 +127,29 @@ public class jFAlertasCadastrados extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAlertas;
     // End of variables declaration//GEN-END:variables
-    public void listarAlertas() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException{
-     
+    public void listarAlertas() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
+
         GenericDao d = new GenericDao();
+
+        // List alertas = d.listar(Alertas.class);    
+        //List <Alertas> lista = alertas;
+        //List<Object> lista = d.listar(Alertas.class);
+        DefaultTableModel novaTabela = (DefaultTableModel) jTableAlertas.getModel();
+
+         List lista = d.listar(Alertas.class);
+
+        List<Alertas> listaa = lista;
         
-        List alertas = d.listar(Alertas.class);    
-        List <Alertas> lista = alertas;
         
         for (int i = 0; i < lista.size(); i++) {
-        Alertas Alertass = new Alertas();
-        Alertass = lista.get(i);
-        jTableAlertas.;
-        
-        
+            System.out.println("teste " + i);
+             Alertas Alertass = new Alertas();
+             Alertass = listaa.get(i);
+            
+             String cod_alerta = Integer.toString(Alertass.getCod_alerta());
+             
+             novaTabela.addRow(new String[]{cod_alerta, "e", "e", "w"});
+
         }
+    }
 }
-}
-
-
-
