@@ -15,10 +15,8 @@ import tabelas.sintomas;
  * @author User
  */
 public class JFConsultaSintomas extends javax.swing.JFrame {
-DefaultTableModel dtmTabela = new DefaultTableModel(null, new String[]{"Codigo", "Nome",});
-    /**
-     * Creates new form JFConsultaSintomas
-     */
+    DefaultTableModel dtmTabela = new DefaultTableModel(null, new String[]{"Codigo", "Nome",});
+    
     public JFConsultaSintomas() {
         initComponents();
        
@@ -26,7 +24,7 @@ DefaultTableModel dtmTabela = new DefaultTableModel(null, new String[]{"Codigo",
 
     private JFConsultaSintomas(List<Object> lista) {
        initComponents();
-        montaTabela(lista);
+       montaTabela(lista);
     }
 
     /**
@@ -107,9 +105,7 @@ DefaultTableModel dtmTabela = new DefaultTableModel(null, new String[]{"Codigo",
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -161,9 +157,9 @@ DefaultTableModel dtmTabela = new DefaultTableModel(null, new String[]{"Codigo",
             String[] linha = new String[]{null, null, null};
             for (int i = 0; i < lista.size(); i++) {
                 dtmTabela.addRow(linha);
-                 sintomas pe = (sintomas) lista.get(i);
-                dtmTabela.setValueAt(pe.getCod_sintoma(), i, 0);
-                dtmTabela.setValueAt(pe.getNome_sintoma(), i, 1);
+                 sintomas se = (sintomas) lista.get(i);
+                dtmTabela.setValueAt(se.getCod_sintoma(), i, 0);
+                dtmTabela.setValueAt(se.getNome_sintoma(), i, 1);
                 //dtmTabela.setValueAt(pe.getDescricao(), i, 2);
             }
             jTConsulta.setModel(dtmTabela);

@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import tabelas.sintomas;
 
 
 /**
@@ -230,5 +231,20 @@ public class GenericDao {
         JPanel buttonPanel = new JPanel();
         //getContentPane().add(buttonPanel, BorderLayout.SOUTH);
         }*/
+    }
+    public List<sintomas> getLista() throws SQLException {
+        String sql = "SELECT * FROM pessoas";
+        List<sintomas> lista;
+        PreparedStatement stmt = this.conexao.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        lista = new ArrayList<sintomas>();
+        while (rs.next()) {
+            sintomas p = new sintomas();
+            p.setCod_sintoma(rs.getInt("cod_sintoma"));
+            p.setNome_sintoma(rs.getString("nome_sintoma"));
+            lista.add(p);
+        }
+        rs.close();
+        return lista;
     }
 }
