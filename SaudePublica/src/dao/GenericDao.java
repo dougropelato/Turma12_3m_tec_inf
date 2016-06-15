@@ -10,8 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import tabelas.sintomas;
-
 
 /**
  *
@@ -49,6 +49,9 @@ public class GenericDao {
             stmt.execute();
         }
         System.out.println("Registro ADICIONADO ao banco!");
+        if (classe == "tabelas.Humanos") {
+            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso !");
+        }
     }
 
     public List<Object> listar(Class c)
@@ -121,7 +124,7 @@ public class GenericDao {
                 + "WHERE information_schema.KEY_COLUMN_USAGE.CONSTRAINT_NAME LIKE \"PRIMARY\" \n"
                 + "AND information_schema.KEY_COLUMN_USAGE.TABLE_SCHEMA LIKE \"" + baseDados + "\""
                 + " AND information_schema.KEY_COLUMN_USAGE.TABLE_NAME LIKE \"" + tabela + "\"";
-       // System.out.println("sql3: " + sql3);
+        // System.out.println("sql3: " + sql3);
 
         for (int i = 0; i < listaAtributos.length; i++) {
             Field fld = listaAtributos[i];
@@ -144,11 +147,11 @@ public class GenericDao {
             }
         }
         String sql = "UPDATE " + tabela + " SET " + campos + " WHERE " + lugar + "";
-      //  PreparedStatement stmt = conexao.prepareCall(sql);
+        //  PreparedStatement stmt = conexao.prepareCall(sql);
         System.out.println(sql);
-      //  stmt.execute();
-      //  stmt.close();
-      //  System.out.println("Registro Alterado!!!");
+        //  stmt.execute();
+        //  stmt.close();
+        //  System.out.println("Registro Alterado!!!");
     }
 
     public void excluir(Object obj) throws ClassNotFoundException,
@@ -232,6 +235,7 @@ public class GenericDao {
         //getContentPane().add(buttonPanel, BorderLayout.SOUTH);
         }*/
     }
+
     public List<sintomas> getLista() throws SQLException {
         String sql = "SELECT * FROM sintomas";
         List<sintomas> lista;
