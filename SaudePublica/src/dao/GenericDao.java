@@ -233,7 +233,7 @@ public class GenericDao {
         }*/
     }
     public List<sintomas> getLista() throws SQLException {
-        String sql = "SELECT * FROM pessoas";
+        String sql = "SELECT * FROM sintomas";
         List<sintomas> lista;
         PreparedStatement stmt = this.conexao.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();

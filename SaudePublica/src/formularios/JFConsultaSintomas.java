@@ -5,7 +5,12 @@
  */
 package formularios;
 
+import dao.GenericDao;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tabelas.sintomas;
@@ -17,9 +22,10 @@ import tabelas.sintomas;
 public class JFConsultaSintomas extends javax.swing.JFrame {
     DefaultTableModel dtmTabela = new DefaultTableModel(null, new String[]{"Codigo", "Nome",});
     
-    public JFConsultaSintomas() {
-        initComponents();
-       
+    public JFConsultaSintomas() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
+       // initComponents();
+         iniciar();
+    
     }
 
     private JFConsultaSintomas(List<Object> lista) {
@@ -133,7 +139,23 @@ public class JFConsultaSintomas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFConsultaSintomas().setVisible(true);
+                try {
+                    new JFConsultaSintomas().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFConsultaSintomas.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(JFConsultaSintomas.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(JFConsultaSintomas.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(JFConsultaSintomas.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(JFConsultaSintomas.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(JFConsultaSintomas.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(JFConsultaSintomas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -148,6 +170,7 @@ public class JFConsultaSintomas extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void montaTabela(List<Object> lista) {
+        
         if (jTConsulta.getRowCount() > 0) {
             dtmTabela.setNumRows(0);
         }// Previne o nullpointer
@@ -155,15 +178,27 @@ public class JFConsultaSintomas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nada Cadastrado");
         } else {
             String[] linha = new String[]{null, null, null};
+           
             for (int i = 0; i < lista.size(); i++) {
+               
+                
                 dtmTabela.addRow(linha);
                  sintomas se = (sintomas) lista.get(i);
                 dtmTabela.setValueAt(se.getCod_sintoma(), i, 0);
                 dtmTabela.setValueAt(se.getNome_sintoma(), i, 1);
                 //dtmTabela.setValueAt(pe.getDescricao(), i, 2);
+                
             }
-            jTConsulta.setModel(dtmTabela);
+           jTConsulta.setModel(dtmTabela);
+       // iniciar();
         }
+    }
+    public void iniciar() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException{
+        GenericDao gDao = new GenericDao();
+        System.out.println("");
+        List<Object> lista = gDao.listar(sintomas.class);
+        JFConsultaSintomas t = new JFConsultaSintomas(lista);
+        t.setVisible(true);
     }
 
 }
