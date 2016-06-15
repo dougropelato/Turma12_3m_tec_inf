@@ -5,6 +5,13 @@
  */
 package formularios;
 
+import dao.GenericDao;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.util.List;
+import tabelas.Doencas;
+import tabelas.historico_avaliacao;
+
 /**
  *
  * @author Fernando
@@ -27,18 +34,18 @@ public class jFGraficoDoença extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPGrafico = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPGraficoLayout = new javax.swing.GroupLayout(jPGrafico);
+        jPGrafico.setLayout(jPGraficoLayout);
+        jPGraficoLayout.setHorizontalGroup(
+            jPGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 597, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPGraficoLayout.setVerticalGroup(
+            jPGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 250, Short.MAX_VALUE)
         );
 
@@ -48,14 +55,14 @@ public class jFGraficoDoença extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
@@ -98,6 +105,104 @@ public class jFGraficoDoença extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPGrafico;
     // End of variables declaration//GEN-END:variables
+public void gráfico() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException{
+    GenericDao dao = new GenericDao();
+     List Teste = dao.listar(historico_avaliacao.class);  
+     
+     List Doencas = dao.listar(Doencas.class); 
+     List<Doencas> todasCidades = Doencas;          
+     
+     List<cidade> cidadesUsadas = new ArrayList();
+     List<NumeroCidade> contagemCidades = new ArrayList();
+     List<NumeroCidade> ordemGrafico = new ArrayList();
+     
+// Esse for tem como objetivo descobrir quais as cidades que "nao" tem seu codigo usado/referenciado na tabela Alunos, deixando as que tem referencia em uma List
+     for (int i = 0; i < Teste.size(); i++) { 
+            
+            List<historico_avaliacao> lal = Teste; //Cria uma List de tipo Alunos para poder usar o conteudo da tabela Alunos
+            historico_avaliacao test = lal.get(i);
+            
+            for (int j = 0; j < todasCidades.size(); j++) {  
+                cidade cidades = todasCidades.get(j);
+                if (cidades.getCod_cidade()== test.getCod_cidade()) { // Identifica a cidade que foi usada para por esse Aluno e criando um objeto o adiciona a uma List
+                    cidade guarda = new cidade();
+                    guarda.setCod_cidade(test.getCod_cidade());
+                    guarda.setNome_cidade(cidades.getNome_cidade());
+                    cidadesUsadas.add(guarda);
+                }
+            }
+        }
+    
+    // Esse for tem como objetivo contar "quantas" vezes cada cidade foi referenciada na tabela Alunos e guarda as informação em uma List 
+     for (int i = 0; i < todasCidades.size(); i++) { 
+         NumeroCidade numero;                        /* instancia um objeto do tipo NumeroCidade, objeto tal que foi criado manualmente para 
+                   esse método e contem os parametros numero e nome onde serao colocados o nome da cidade e quantas vezes cada uma foi usada */
+         cidade cidades = todasCidades.get(i);
+          int contar = 0; 
+            for (int j = 0; j < cidadesUsadas.size(); j++) {
+                cidade usadas = cidadesUsadas.get(j);
+                if (usadas.getCod_cidade() == cidades.getCod_cidade()) { // alimenta a variavel cada vez que a cidade encontrada for encontrada
+                 contar++; //variavel ira conter quantas vezes a cidade foi usada
+                }
+            }
+           numero = new NumeroCidade();
+           numero.setNumero(contar);                            
+           numero.setNome_cidade(cidades.getNome_cidade());
+           contagemCidades.add(numero);                                              
+    }
+     
+  
+     
+     // esse for tem como objetivo colocar as cidades em sequencia da maior para a menor no grafico 
+      for (int s = 0; s < numeroCidades; s++) { //  esse for define quantas cidades irao estar no  grafico
+          NumeroCidade teste;
+          int aux = 0;
+          int pegarLinha = 0;
+        
+            for (int i = 0; i < contagemCidades.size(); i++) { // for serve para percorrer toda a List que contem as cidades e quantas vezes foram usadas
+                boolean seila = true;
+                 teste = contagemCidades.get(i);
+                  if (aux < teste.getNumero() ) { // if para serve pegar sempre a cidades com maior numero(vezes referenciado na tabela alunos)
+                     for (int j = 0; j < ordemGrafico.size(); j++) { 
+                          NumeroCidade ordem = ordemGrafico.get(j);
+                              if(teste.getNome_cidade().equals(ordem.getNome_cidade())){ //  esse if serve para descobrir se a cidade em questao ja esta adicionada na List do Grafico
+                                  seila = false;
+                              }
+                      } 
+                     if (seila) {                             // se parametros forem verdadeiros esse if é executado
+                                  aux= teste.getNumero();     
+                                  pegarLinha = i;            // pega a linha da List contagemCidades  para depois poder saber qual e a cidade que precisa ser add na outra List
+                     }
+
+                  }
+              }
+            teste= contagemCidades.get(pegarLinha);
+            ordemGrafico.add(teste);
+      }
+      
+       DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+      // esse for monta o grafico
+      for (int i = 0; i < ordemGrafico.size(); i++) {
+          NumeroCidade teste = ordemGrafico.get(i);
+          System.out.println(teste.getNome_cidade());
+          int numero = teste.getNumero();
+          dataset.setValue(numero, "", teste.getNome_cidade());
+          System.out.println("testeeeeee");
+          
+           JFreeChart chart = ChartFactory.createBarChart("Pessoas por Cidade", "", "", dataset, PlotOrientation.VERTICAL, false, false, false);
+        CategoryPlot catPlot = chart.getCategoryPlot();
+        catPlot.setRangeGridlinePaint(Color.BLACK);
+        
+        ChartPanel qualquercoisa = new ChartPanel(chart);
+        qualquercoisa.setSize(jPGrafico.getWidth(),jPGrafico.getHeight());
+        qualquercoisa.setVisible(true);
+        jPGrafico.removeAll();
+        jPGrafico.add(qualquercoisa, BorderLayout.CENTER);
+        jPGrafico.revalidate();
+        jPGrafico.repaint();
+    }
+}
+
 }

@@ -11,7 +11,7 @@ package tabelas;
  */
 public class historico_avaliacao {
     private int cod_diagnostico;
-    private String dATA_hora;
+    private String data_hora;
     private int cod_humanos;
     private int cod_doenca;
 
@@ -33,14 +33,14 @@ public class historico_avaliacao {
      * @return the dATA_hora
      */
     public String getdATA_hora() {
-        return dATA_hora;
+        return data_hora;
     }
 
     /**
      * @param dATA_hora the dATA_hora to set
      */
     public void setdATA_hora(String dATA_hora) {
-        this.dATA_hora = dATA_hora;
+        this.data_hora = dATA_hora;
     }
 
     /**
