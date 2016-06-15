@@ -20,17 +20,12 @@ import tabelas.sintomas;
  * @author User
  */
 public class JFConsultaSintomas extends javax.swing.JFrame {
-    DefaultTableModel dtmTabela = new DefaultTableModel(null, new String[]{"Codigo", "Nome",});
-    
-    public JFConsultaSintomas() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
-       // initComponents();
-         iniciar();
-    
-    }
 
-    private JFConsultaSintomas(List<Object> lista) {
-       initComponents();
-       montaTabela(lista);
+    DefaultTableModel dtmTabela = new DefaultTableModel(null, new String[]{"Codigo", "Nome",});
+
+    public JFConsultaSintomas() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
+        initComponents();
+        montaTabela();
     }
 
     /**
@@ -111,7 +106,6 @@ public class JFConsultaSintomas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -169,36 +163,30 @@ public class JFConsultaSintomas extends javax.swing.JFrame {
     private javax.swing.JTable jTConsulta;
     // End of variables declaration//GEN-END:variables
 
-    private void montaTabela(List<Object> lista) {
-        
+    private void montaTabela() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
+
         if (jTConsulta.getRowCount() > 0) {
             dtmTabela.setNumRows(0);
         }// Previne o nullpointer
+
+        GenericDao gDao = new GenericDao();
+        List<Object> lista = gDao.listar(sintomas.class);
+
         if (lista.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nada Cadastrado");
         } else {
             String[] linha = new String[]{null, null, null};
-           
+
             for (int i = 0; i < lista.size(); i++) {
-               
-                
+
                 dtmTabela.addRow(linha);
-                 sintomas se = (sintomas) lista.get(i);
+                sintomas se = (sintomas) lista.get(i);
                 dtmTabela.setValueAt(se.getCod_sintoma(), i, 0);
                 dtmTabela.setValueAt(se.getNome_sintoma(), i, 1);
                 //dtmTabela.setValueAt(pe.getDescricao(), i, 2);
-                
+
             }
-           jTConsulta.setModel(dtmTabela);
-       // iniciar();
+            jTConsulta.setModel(dtmTabela);
         }
     }
-    public void iniciar() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException{
-        GenericDao gDao = new GenericDao();
-        System.out.println("");
-        List<Object> lista = gDao.listar(sintomas.class);
-        JFConsultaSintomas t = new JFConsultaSintomas(lista);
-        t.setVisible(true);
-    }
-
 }
