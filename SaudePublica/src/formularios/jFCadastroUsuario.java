@@ -24,6 +24,8 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
      */
     public jFCadastroUsuario() {
         initComponents();
+        setLocationRelativeTo(null);
+        this.setSize(364, 415);
         try {
             listarEstados();
         } catch (SQLException ex) {
@@ -68,8 +70,13 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         jLGenero = new javax.swing.JLabel();
         jRBMasculino = new javax.swing.JRadioButton();
         jRBFeminino = new javax.swing.JRadioButton();
+        jBSalvarEditar = new javax.swing.JButton();
+        jCBEditarUsuario = new javax.swing.JComboBox<>();
+        jLAlterar = new javax.swing.JLabel();
+        jBEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLCadastrarUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLCadastrarUsuario.setText("Cadastrar Novo Usuário");
@@ -119,6 +126,25 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
 
         jRBFeminino.setText("Feminino");
 
+        jBSalvarEditar.setText("Salvar");
+
+        jCBEditarUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBEditarUsuarioActionPerformed(evt);
+            }
+        });
+
+        jLAlterar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLAlterar.setText("Editar Usuário");
+
+        jBEditar.setText("Editar");
+        jBEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,39 +152,59 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLCadastrarNome)
-                            .addComponent(jLCadastrarEndereco)
-                            .addComponent(jLCadastarCidade)
-                            .addComponent(jLCadastrarSenha)
-                            .addComponent(jLGenero))
-                        .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLCadastrarUsuario))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jLCadastrarNome)
+                                .addGap(49, 49, 49)
+                                .addComponent(jTFCadastrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jLCadastrarEndereco)
+                                .addGap(31, 31, 31)
+                                .addComponent(jTFCadastrarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jLCadastarCidade)
+                                .addGap(43, 43, 43)
+                                .addComponent(jCBCidades, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLCadastrarUF)
+                                .addGap(4, 4, 4)
+                                .addComponent(jCBEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jLGenero)
+                                .addGap(41, 41, 41)
                                 .addComponent(jRBMasculino)
                                 .addGap(18, 18, 18)
                                 .addComponent(jRBFeminino))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jCBCidades, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLCadastrarUF)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jCBEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jTFCadastrarEndereco)
-                                .addComponent(jTFCadastrarNome))
-                            .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLCadastrarUsuario)))
-                .addContainerGap(89, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jBCadastrarLimpar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBCadastrarCadastrar)
-                .addGap(43, 43, 43))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jLCadastrarSenha)
+                                .addGap(46, 46, 46)
+                                .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(121, 121, 121)
+                                .addComponent(jBEditar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBCadastrarLimpar)
+                                .addGap(10, 10, 10)
+                                .addComponent(jBCadastrarCadastrar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jLAlterar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(jCBEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 8, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jBSalvarEditar)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,33 +212,52 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jLCadastrarUsuario)
                 .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCadastrarNome)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLCadastrarNome))
                     .addComponent(jTFCadastrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCadastrarEndereco)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLCadastrarEndereco))
                     .addComponent(jTFCadastrarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCadastarCidade)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCBCidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCBEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLCadastrarUF))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLCadastarCidade)
+                            .addComponent(jLCadastrarUF))))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLGenero)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLGenero))
                     .addComponent(jRBMasculino)
                     .addComponent(jRBFeminino))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCadastrarSenha)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLCadastrarSenha))
                     .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBCadastrarLimpar)
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jBCadastrarLimpar)
+                        .addComponent(jBEditar))
                     .addComponent(jBCadastrarCadastrar))
-                .addContainerGap())
+                .addGap(31, 31, 31)
+                .addComponent(jLAlterar)
+                .addGap(18, 18, 18)
+                .addComponent(jCBEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBSalvarEditar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -208,11 +273,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja realmente limpar todos campos ?");
 
         if (confirmacao == 0) {
-            jTFCadastrarNome.setText("");
-            jTFCadastrarEndereco.setText("");
-            jPFCadastrarSenha.setText("");
-            jRBMasculino.setSelected(false);
-            jRBFeminino.setSelected(false);
+            limparCampos();
         }
     }//GEN-LAST:event_jBCadastrarLimparActionPerformed
 
@@ -254,6 +315,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                 usuario.setCod_cidade(buscarCodCidade(nome_cf));
 
                 gd.adicionar(usuario);
+                limparCampos();
 
             } catch (SQLException ex) {
                 Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -320,9 +382,76 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jCBEstadosActionPerformed
 
+    private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
+        try {
+            listarUsuarios();
+            this.setSize(364, 540);
+        } catch (SQLException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBEditarActionPerformed
+
+    private void jCBEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEditarUsuarioActionPerformed
+        if (jCBEditarUsuario.getSelectedItem() != null) {
+
+            String pos = (String) (jCBEditarUsuario.getSelectedItem());
+            System.out.println("eee"+pos);
+            GenericDao dao;
+            try {
+                dao = new GenericDao();
+
+                List users = dao.listar(Humanos.class);
+
+                List<Humanos> lista = users;
+                System.out.println("lista size: "+lista.size());
+                for (int i = 0; i < lista.size(); i++) {
+
+                    Humanos hum = new Humanos();
+                    hum = lista.get(i);
+
+                    if (hum.getNome().equals(pos)) {
+                        //jCBCidades.addItem(cidadee.getNome_cidade());
+                        limparCampos();
+
+                        jTFCadastrarNome.setText(hum.getNome());
+
+                    }
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }//GEN-LAST:event_jCBEditarUsuarioActionPerformed
+
     /**
-     * @param args the command line arguments
-     */
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -346,7 +475,6 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(jFCadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -358,8 +486,12 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCadastrarCadastrar;
     private javax.swing.JButton jBCadastrarLimpar;
+    private javax.swing.JButton jBEditar;
+    private javax.swing.JButton jBSalvarEditar;
     private javax.swing.JComboBox<String> jCBCidades;
+    private javax.swing.JComboBox<String> jCBEditarUsuario;
     private javax.swing.JComboBox<String> jCBEstados;
+    private javax.swing.JLabel jLAlterar;
     private javax.swing.JLabel jLCadastarCidade;
     private javax.swing.JLabel jLCadastrarEndereco;
     private javax.swing.JLabel jLCadastrarNome;
@@ -417,4 +549,32 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         return retorno;
     }
 
+    public void limparCampos() {
+        jTFCadastrarNome.setText("");
+        jTFCadastrarEndereco.setText("");
+        jPFCadastrarSenha.setText("");
+        jRBMasculino.setSelected(false);
+        jRBFeminino.setSelected(false);
+    }
+
+    public void listarUsuarios() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
+
+        jCBEditarUsuario.removeAllItems();
+
+        GenericDao dao;
+
+        dao = new GenericDao();
+
+        List users = dao.listar(Humanos.class);
+
+        List<Humanos> lista = users;
+
+        for (int i = 0; i < lista.size(); i++) {
+            Humanos userss = new Humanos();
+            userss = lista.get(i);
+            String nome_user = userss.getNome();
+
+            jCBEditarUsuario.addItem(nome_user);
+        }
+    }
 }
