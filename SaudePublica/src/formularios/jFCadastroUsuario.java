@@ -340,8 +340,27 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
 
     private void jCBEstadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEstadosActionPerformed
         if (jCBEstados.getSelectedItem() != null) {
+            int cod_est = 0;
+            // int pos = (jCBEstados.getSelectedIndex() + 1);
+            String pos = (String) (jCBEstados.getSelectedItem());
 
-            int pos = (jCBEstados.getSelectedIndex() + 1);
+            try {
+                cod_est = listarCod_Estado(pos);
+            } catch (SQLException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             jCBCidades.removeAllItems();
 
@@ -358,7 +377,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                     cidade cidadee = new cidade();
                     cidadee = lista.get(i);
 
-                    if (cidadee.getCod_estado() == pos) {
+                    if (cidadee.getCod_estado() == cod_est) {
                         jCBCidades.addItem(cidadee.getNome_cidade());
                     }
                 }
@@ -407,7 +426,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         if (jCBEditarUsuario.getSelectedItem() != null) {
 
             String pos = (String) (jCBEditarUsuario.getSelectedItem());
-            System.out.println("eee"+pos);
+           
             GenericDao dao;
             try {
                 dao = new GenericDao();
@@ -415,7 +434,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                 List users = dao.listar(Humanos.class);
 
                 List<Humanos> lista = users;
-                System.out.println("lista size: "+lista.size());
+                
                 for (int i = 0; i < lista.size(); i++) {
 
                     Humanos hum = new Humanos();
@@ -426,7 +445,13 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                         limparCampos();
 
                         jTFCadastrarNome.setText(hum.getNome());
+                        jTFCadastrarEndereco.setText(hum.getEndereco());
+                        if (hum.getGenero().equals("m")) {
+                            jRBMasculino.setSelected(true);
 
+                        } else {
+                            jRBFeminino.setSelected(true);
+                        }
                     }
                 }
 
@@ -450,8 +475,8 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jCBEditarUsuarioActionPerformed
 
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -575,6 +600,25 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             String nome_user = userss.getNome();
 
             jCBEditarUsuario.addItem(nome_user);
+
         }
+    }
+
+    public int listarCod_Estado(String estado) throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
+        int retorno = 0;
+        GenericDao dao = new GenericDao();
+        List est = dao.listar(estado.class);
+
+        List<estado> lista = est;
+
+        for (int i = 0; i < lista.size(); i++) {
+
+            estado estadoo = new estado();
+            estadoo = lista.get(i);
+            if (estado.equals(estadoo.getUF())) {
+                retorno = estadoo.getCod_estado();
+            }
+        }
+        return retorno;
     }
 }
