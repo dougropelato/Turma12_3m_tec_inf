@@ -573,7 +573,6 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             Humanos userss = new Humanos();
             userss = lista.get(i);
             String nome_user = userss.getNome();
-
             jCBEditarUsuario.addItem(nome_user);
         }
     }
