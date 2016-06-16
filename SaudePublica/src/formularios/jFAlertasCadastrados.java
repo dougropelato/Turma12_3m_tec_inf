@@ -47,7 +47,7 @@ public class jFAlertasCadastrados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Título 1", "Título 2", "Título 3"
+                "Código Alerta", "Descrição Alerta", "Cor do Alerta"
             }
         ));
         jScrollPane1.setViewportView(jTableAlertas);
@@ -57,15 +57,16 @@ public class jFAlertasCadastrados extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 25, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
         );
 
         pack();
@@ -131,9 +132,6 @@ public class jFAlertasCadastrados extends javax.swing.JFrame {
 
         GenericDao d = new GenericDao();
 
-        // List alertas = d.listar(Alertas.class);    
-        //List <Alertas> lista = alertas;
-        //List<Object> lista = d.listar(Alertas.class);
         DefaultTableModel novaTabela = (DefaultTableModel) jTableAlertas.getModel();
 
          List lista = d.listar(Alertas.class);
@@ -142,13 +140,15 @@ public class jFAlertasCadastrados extends javax.swing.JFrame {
         
         
         for (int i = 0; i < lista.size(); i++) {
-            System.out.println("teste " + i);
+            
              Alertas Alertass = new Alertas();
              Alertass = listaa.get(i);
             
              String cod_alerta = Integer.toString(Alertass.getCod_alerta());
+             String descricao = (Alertass.getDescricao());
+             String cor_alerta = (Alertass.getCor_alerta());
              
-             novaTabela.addRow(new String[]{cod_alerta, "e", "e", "w"});
+             novaTabela.addRow(new String[]{cod_alerta,descricao, cor_alerta});
 
         }
     }
