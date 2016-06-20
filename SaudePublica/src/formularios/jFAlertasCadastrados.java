@@ -39,6 +39,7 @@ public class jFAlertasCadastrados extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAlertas = new javax.swing.JTable();
+        jBAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,26 +53,67 @@ public class jFAlertasCadastrados extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableAlertas);
 
+        jBAlterar.setText("Editar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlterarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jBAlterar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(jBAlterar))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+        try {
+            GenericDao d = new GenericDao();
+            Alertas a = new Alertas();
+           
+            int linha= jTableAlertas. getSelectedRow();
+            
+            a.setCod_alerta((int) jTableAlertas.getValueAt(linha, 0));
+            a.setDescricao((String) jTableAlertas.getValueAt(linha, 1));
+            a.setCor_alerta((String) jTableAlertas.getValueAt(linha, 2));
+            
+            d.alterar(a);
+        } catch (SQLException ex) {
+            Logger.getLogger(jFAlertasCadastrados.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(jFAlertasCadastrados.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(jFAlertasCadastrados.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(jFAlertasCadastrados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            
+            
+            
+            
+            
+    }//GEN-LAST:event_jBAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +167,7 @@ public class jFAlertasCadastrados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAlterar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAlertas;
     // End of variables declaration//GEN-END:variables
