@@ -67,6 +67,11 @@ public class jFConsultaDoenças extends javax.swing.JFrame {
         });
 
         jButton2.setText("Excluir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Cancelar");
 
@@ -116,6 +121,7 @@ public class jFConsultaDoenças extends javax.swing.JFrame {
         GenericDao d = new GenericDao();//objetos
         Doencas doencas = new Doencas();//objetos
         
+        //doencas.setcod_doenca();
         doencas.setnome_doenca("");
         doencas.setdescricao("");
         
@@ -134,6 +140,31 @@ public class jFConsultaDoenças extends javax.swing.JFrame {
             Logger.getLogger(jFConsultaDoenças.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{   
+        GenericDao d = new GenericDao();//objetos
+        Doencas doencas = new Doencas();//objetos
+        
+        //doencas.setcod_doenca();
+        doencas.setnome_doenca("");
+        doencas.setdescricao("");
+        
+         try {
+             d.excluir(doencas);//método adicionar
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(jFConsultaDoenças.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (IllegalArgumentException ex) {
+             Logger.getLogger(jFConsultaDoenças.class.getName()).log(Level.SEVERE, null, ex);
+         }  catch (NoSuchFieldException ex) {
+                Logger.getLogger(jFConsultaDoenças.class.getName()).log(Level.SEVERE, null, ex);
+            }
+     } catch (SQLException ex){
+         System.out.println("Erro"+ex); 
+     }  catch (ClassNotFoundException ex) {
+            Logger.getLogger(jFConsultaDoenças.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
