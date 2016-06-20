@@ -60,6 +60,11 @@ public class jFConsultaDoenças extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTConsulta);
 
         jButton1.setText("Editar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Excluir");
 
@@ -105,6 +110,30 @@ public class jFConsultaDoenças extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      try{   
+        GenericDao d = new GenericDao();//objetos
+        Doencas doencas = new Doencas();//objetos
+        
+        doencas.setnome_doenca("");
+        doencas.setdescricao("");
+        
+         try {
+             d.alterar(doencas);//método adicionar
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(jFConsultaDoenças.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (IllegalArgumentException ex) {
+             Logger.getLogger(jFConsultaDoenças.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (IllegalAccessException ex) {
+             Logger.getLogger(jFConsultaDoenças.class.getName()).log(Level.SEVERE, null, ex);
+         }
+     } catch (SQLException ex){
+         System.out.println("Erro"+ex); 
+     }  catch (ClassNotFoundException ex) {
+            Logger.getLogger(jFConsultaDoenças.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
