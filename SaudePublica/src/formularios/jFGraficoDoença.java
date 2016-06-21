@@ -6,10 +6,18 @@
 package formularios;
 
 import dao.GenericDao;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import tabelas.Contagem;
 import tabelas.Doencas;
 import tabelas.historico_avaliacao;
@@ -19,7 +27,7 @@ import tabelas.historico_avaliacao;
  * @author Fernando
  */
 public class jFGraficoDoença extends javax.swing.JFrame {
-
+int numeroCidades = 5;
     /**
      * Creates new form jFGraficoDoença
      */
@@ -159,7 +167,7 @@ public void gráfico() throws SQLException, ClassNotFoundException, IllegalAcces
      
      // esse for tem como objetivo colocar as cidades em sequencia da maior para a menor no grafico 
       for (int s = 0; s < numeroCidades; s++) { //  esse for define quantas cidades irao estar no  grafico
-          NumeroCidade teste;
+          Contagem teste;
           int aux = 0;
           int pegarLinha = 0;
         
@@ -168,7 +176,7 @@ public void gráfico() throws SQLException, ClassNotFoundException, IllegalAcces
                  teste = contagemCidades.get(i);
                   if (aux < teste.getNumero() ) { // if para serve pegar sempre a cidades com maior numero(vezes referenciado na tabela alunos)
                      for (int j = 0; j < ordemGrafico.size(); j++) { 
-                          NumeroCidade ordem = ordemGrafico.get(j);
+                          Contagem ordem = ordemGrafico.get(j);
                               if(teste.getNome_cidade().equals(ordem.getNome_cidade())){ //  esse if serve para descobrir se a cidade em questao ja esta adicionada na List do Grafico
                                   seila = false;
                               }
@@ -187,7 +195,7 @@ public void gráfico() throws SQLException, ClassNotFoundException, IllegalAcces
        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
       // esse for monta o grafico
       for (int i = 0; i < ordemGrafico.size(); i++) {
-          NumeroCidade teste = ordemGrafico.get(i);
+          Contagem teste = ordemGrafico.get(i);
           System.out.println(teste.getNome_cidade());
           int numero = teste.getNumero();
           dataset.setValue(numero, "", teste.getNome_cidade());
