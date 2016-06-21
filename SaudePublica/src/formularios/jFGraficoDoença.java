@@ -12,6 +12,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -33,6 +35,23 @@ int numeroCidades = 5;
      */
     public jFGraficoDoença() {
         initComponents();
+    try {
+        gráfico();
+    } catch (SQLException ex) {
+        Logger.getLogger(jFGraficoDoença.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(jFGraficoDoença.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        Logger.getLogger(jFGraficoDoença.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (NoSuchMethodException ex) {
+        Logger.getLogger(jFGraficoDoença.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IllegalArgumentException ex) {
+        Logger.getLogger(jFGraficoDoença.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (InvocationTargetException ex) {
+        Logger.getLogger(jFGraficoDoença.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        Logger.getLogger(jFGraficoDoença.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
 
     /**
@@ -201,7 +220,7 @@ public void gráfico() throws SQLException, ClassNotFoundException, IllegalAcces
           dataset.setValue(numero, "", teste.getNome_cidade());
           System.out.println("testeeeeee");
           
-           JFreeChart chart = ChartFactory.createBarChart("Pessoas por Cidade", "", "", dataset, PlotOrientation.VERTICAL, false, false, false);
+           JFreeChart chart = ChartFactory.createBarChart("Doenças ", "", "", dataset, PlotOrientation.VERTICAL, false, false, false);
         CategoryPlot catPlot = chart.getCategoryPlot();
         catPlot.setRangeGridlinePaint(Color.BLACK);
         
