@@ -341,7 +341,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                 GenericDao gd = new GenericDao();
                 Humanos usuario = new Humanos();
 
-                                usuario.setNome(jTFCadastrarNome.getText());
+                usuario.setNome(jTFCadastrarNome.getText());
                 usuario.setEndereco(jTFCadastrarEndereco.getText());
                 usuario.setRanking(0); // verificar
                 usuario.setGenero(gen);
@@ -434,7 +434,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                     hum = lista.get(i);
 
                     if (hum.getNome().equals(pos)) {
-                        
+
                         limparCampos();
 
                         jTFCadastrarNome.setText(hum.getNome());
@@ -446,7 +446,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                             jRBFeminino.setSelected(true);
                         }
                         jPFCadastrarSenha.setText(hum.getSenha());
-                                                int exb_cod = hum.getCod_humanos();
+                        int exb_cod = hum.getCod_humanos();
                         jLCod_humano.setText(Integer.toString(hum.getCod_humanos()));
 
                         int cod_cidade = hum.getCod_cidade();
@@ -478,7 +478,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
 
                             if (cod_est == cod_estadoo) {
                                 nome_est = estss.getUF();
-                                                            }
+                            }
                         }
                         jCBEstados.getModel().setSelectedItem(nome_est);
                         jCBCidades.getModel().setSelectedItem(nome_cidadee);
@@ -569,76 +569,80 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                 } catch (InstantiationException ex) {
                     Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos !");
             }
         }
     }//GEN-LAST:event_jBSalvarEditarActionPerformed
 
     private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
-         int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir este usuário ?");
+        int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir este usuário ?");
 
         if (confirmacao == 0) {
-        try {
-            GenericDao gdex = new GenericDao();
-            Humanos humex = new Humanos();
-            
-            humex.setCod_humanos(Integer.parseInt(jLCod_humano.getText()));
-            
-            gdex.excluir(humex);
-            listarUsuarios();
-        } catch (SQLException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchFieldException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }    catch (IllegalAccessException ex) {
-                 Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-             } catch (NoSuchMethodException ex) {
-                 Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-             } catch (IllegalArgumentException ex) {
-                 Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-             } catch (InvocationTargetException ex) {
-                 Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-             } catch (InstantiationException ex) {
-                 Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-             }
-        
-        
+            try {
+                GenericDao gdex = new GenericDao();
+                Humanos humex = new Humanos();
+
+                humex.setCod_humanos(Integer.parseInt(jLCod_humano.getText()));
+
+                gdex.excluir(humex);
+                listarUsuarios();
+            } catch (SQLException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchFieldException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
-        
+
     }//GEN-LAST:event_jBExcluirActionPerformed
 
     private void jTBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTBEditarActionPerformed
-        if(jTBEditar.isSelected() == true) {
-        try {
-            listarUsuarios();
-            this.setSize(364, 550);
-        } catch (SQLException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchMethodException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalArgumentException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvocationTargetException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }else{
-         this.setSize(364, 425);
-         limparCampos();
+        if (jTBEditar.isSelected() == true) {
+            jBCadastrarCadastrar.setEnabled(false);
+            jBCadastrarLimpar.setEnabled(false);
+            try {
+                listarUsuarios();
+                this.setSize(364, 550);
+            } catch (SQLException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            this.setSize(364, 425);
+            limparCampos();
+            jBCadastrarCadastrar.setEnabled(true);
+
+            jBCadastrarLimpar.setEnabled(true);
         }
     }//GEN-LAST:event_jTBEditarActionPerformed
 
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
