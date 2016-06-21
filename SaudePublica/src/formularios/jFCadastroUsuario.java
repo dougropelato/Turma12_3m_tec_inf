@@ -24,7 +24,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
      */
     public jFCadastroUsuario() {
         initComponents();
-        jBEditar.setVisible(false);
+        jTBEditar.setVisible(false);
         setLocationRelativeTo(null);
         this.setSize(364, 425);
         try {
@@ -74,9 +74,10 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         jBSalvarEditar = new javax.swing.JButton();
         jCBEditarUsuario = new javax.swing.JComboBox<>();
         jLAlterar = new javax.swing.JLabel();
-        jBEditar = new javax.swing.JButton();
         jBLogar = new javax.swing.JButton();
         jLCod_humano = new javax.swing.JLabel();
+        jBExcluir = new javax.swing.JButton();
+        jTBEditar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -129,7 +130,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
 
         jRBFeminino.setText("Feminino");
 
-        jBSalvarEditar.setText("Salvar");
+        jBSalvarEditar.setText("Alterar");
         jBSalvarEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSalvarEditarActionPerformed(evt);
@@ -146,13 +147,6 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         jLAlterar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLAlterar.setText("Editar Usuário");
 
-        jBEditar.setText("Editar");
-        jBEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBEditarActionPerformed(evt);
-            }
-        });
-
         jBLogar.setText("X");
         jBLogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +155,20 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         });
 
         jLCod_humano.setText("COD");
+
+        jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluirActionPerformed(evt);
+            }
+        });
+
+        jTBEditar.setText("Editar");
+        jTBEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTBEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,8 +213,8 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                                 .addGap(46, 46, 46)
                                 .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(121, 121, 121)
-                                .addComponent(jBEditar)
+                                .addGap(77, 77, 77)
+                                .addComponent(jTBEditar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBCadastrarLimpar)
                                 .addGap(10, 10, 10)
@@ -219,9 +227,11 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                                 .addComponent(jLCod_humano)
                                 .addGap(18, 18, 18)
                                 .addComponent(jCBEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 8, Short.MAX_VALUE))
+                        .addGap(0, 20, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jBExcluir)
+                        .addGap(18, 18, 18)
                         .addComponent(jBSalvarEditar)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -274,7 +284,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBCadastrarLimpar)
-                        .addComponent(jBEditar))
+                        .addComponent(jTBEditar))
                     .addComponent(jBCadastrarCadastrar))
                 .addGap(31, 31, 31)
                 .addComponent(jLAlterar)
@@ -283,7 +293,9 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                     .addComponent(jCBEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLCod_humano))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBSalvarEditar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBSalvarEditar)
+                    .addComponent(jBExcluir))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -327,11 +339,9 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             try {
 
                 GenericDao gd = new GenericDao();
-
                 Humanos usuario = new Humanos();
 
-                // usuario.setCod_humanos(8); nao precisa
-                usuario.setNome(jTFCadastrarNome.getText());
+                                usuario.setNome(jTFCadastrarNome.getText());
                 usuario.setEndereco(jTFCadastrarEndereco.getText());
                 usuario.setRanking(0); // verificar
                 usuario.setGenero(gen);
@@ -377,11 +387,9 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                 dao = new GenericDao();
 
                 List cid = dao.listar(cidade.class);
-
                 List<cidade> lista = cid;
 
                 for (int i = 0; i < lista.size(); i++) {
-
                     cidade cidadee = new cidade();
                     cidadee = lista.get(i);
 
@@ -409,27 +417,6 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jCBEstadosActionPerformed
 
-    private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
-        try {
-            listarUsuarios();
-            this.setSize(364, 550);
-        } catch (SQLException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchMethodException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalArgumentException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvocationTargetException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jBEditarActionPerformed
-
     private void jCBEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEditarUsuarioActionPerformed
         if (jCBEditarUsuario.getSelectedItem() != null) {
 
@@ -438,9 +425,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
             GenericDao dao;
             try {
                 dao = new GenericDao();
-
                 List users = dao.listar(Humanos.class);
-
                 List<Humanos> lista = users;
 
                 for (int i = 0; i < lista.size(); i++) {
@@ -449,7 +434,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                     hum = lista.get(i);
 
                     if (hum.getNome().equals(pos)) {
-                        //jCBCidades.addItem(cidadee.getNome_cidade());
+                        
                         limparCampos();
 
                         jTFCadastrarNome.setText(hum.getNome());
@@ -461,8 +446,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                             jRBFeminino.setSelected(true);
                         }
                         jPFCadastrarSenha.setText(hum.getSenha());
-                        System.out.println("cod: " + hum.getCod_humanos());
-                        int exb_cod = hum.getCod_humanos();
+                                                int exb_cod = hum.getCod_humanos();
                         jLCod_humano.setText(Integer.toString(hum.getCod_humanos()));
 
                         int cod_cidade = hum.getCod_cidade();
@@ -480,7 +464,6 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                             if (cod_cidadee == cod_cidade) {
                                 nome_cidadee = cidf.getNome_cidade();
                                 cod_estadoo = cidf.getCod_estado();
-// jCBCidades.getModel().setSelectedItem(cidf.getNome_cidade());
                             }
                         }
 
@@ -495,9 +478,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
 
                             if (cod_est == cod_estadoo) {
                                 nome_est = estss.getUF();
-                                // int cod_estadoo = cidf.getCod_estado();
-// jCBCidades.getModel().setSelectedItem(cidf.getNome_cidade());
-                            }
+                                                            }
                         }
                         jCBEstados.getModel().setSelectedItem(nome_est);
                         jCBCidades.getModel().setSelectedItem(nome_cidadee);
@@ -525,66 +506,135 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jCBEditarUsuarioActionPerformed
 
     private void jBLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLogarActionPerformed
-        jBEditar.setVisible(true);
+        jTBEditar.setVisible(true);
     }//GEN-LAST:event_jBLogarActionPerformed
 
     private void jBSalvarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarEditarActionPerformed
+        int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja realmente alterar este usuário ?");
 
-        String gen;
+        if (confirmacao == 0) {
 
-        if (jRBMasculino.isSelected() == true || jRBFeminino.isSelected() == true) {
+            String gen;
 
-            if (jRBMasculino.isSelected() == true) {
-                gen = "m";
+            if (jRBMasculino.isSelected() == true || jRBFeminino.isSelected() == true) {
+
+                if (jRBMasculino.isSelected() == true) {
+                    gen = "m";
+                } else {
+                    gen = "f";
+                }
             } else {
-                gen = "f";
+                gen = "na";
             }
-        } else {
-            gen = "na";
-        }
 
-        String conf_nome = jTFCadastrarNome.getText();
-        String conf_ende = jTFCadastrarEndereco.getText();
-        String conf_senha = jPFCadastrarSenha.getText();
+            String conf_nome = jTFCadastrarNome.getText();
+            String conf_ende = jTFCadastrarEndereco.getText();
+            String conf_senha = jPFCadastrarSenha.getText();
 
-        if ((!conf_nome.equals("")) && (!conf_ende.equals("")) && (!conf_senha.equals("")) && (!gen.equals("na"))) {
+            if ((!conf_nome.equals("")) && (!conf_ende.equals("")) && (!conf_senha.equals("")) && (!gen.equals("na"))) {
 
-            try {
-                GenericDao gdAlt = new GenericDao();
+                try {
+                    GenericDao gdAlt = new GenericDao();
 
-                Humanos hum_alt = new Humanos();
+                    Humanos hum_alt = new Humanos();
 
-                hum_alt.setCod_humanos(Integer.parseInt(jLCod_humano.getText()));
-                hum_alt.setNome(jTFCadastrarNome.getText());
-                hum_alt.setEndereco(jTFCadastrarEndereco.getText());
-                hum_alt.setRanking(0); // verificar
-                hum_alt.setGenero(gen);
-                hum_alt.setSenha(jPFCadastrarSenha.getText());
+                    hum_alt.setCod_humanos(Integer.parseInt(jLCod_humano.getText()));
+                    hum_alt.setNome(jTFCadastrarNome.getText());
+                    hum_alt.setEndereco(jTFCadastrarEndereco.getText());
+                    hum_alt.setRanking(0); // verificar
+                    hum_alt.setGenero(gen);
+                    hum_alt.setSenha(jPFCadastrarSenha.getText());
 
-                String nome_cf = String.valueOf(jCBCidades.getSelectedItem());
+                    String nome_cf = String.valueOf(jCBCidades.getSelectedItem());
 
-                hum_alt.setCod_cidade(buscarCodCidade(nome_cf));
+                    hum_alt.setCod_cidade(buscarCodCidade(nome_cf));
 
-                gdAlt.alterar(hum_alt);
+                    gdAlt.alterar(hum_alt);
+                    String n = jTFCadastrarNome.getText();
+                    listarUsuarios();
+                    jCBEditarUsuario.getModel().setSelectedItem(n);
 
-            } catch (SQLException ex) {
-                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (NoSuchMethodException ex) {
-                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalArgumentException ex) {
-                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InvocationTargetException ex) {
-                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos !");
             }
         }
-
     }//GEN-LAST:event_jBSalvarEditarActionPerformed
+
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+         int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir este usuário ?");
+
+        if (confirmacao == 0) {
+        try {
+            GenericDao gdex = new GenericDao();
+            Humanos humex = new Humanos();
+            
+            humex.setCod_humanos(Integer.parseInt(jLCod_humano.getText()));
+            
+            gdex.excluir(humex);
+            listarUsuarios();
+        } catch (SQLException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchFieldException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }    catch (IllegalAccessException ex) {
+                 Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+             } catch (NoSuchMethodException ex) {
+                 Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+             } catch (IllegalArgumentException ex) {
+                 Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+             } catch (InvocationTargetException ex) {
+                 Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+             } catch (InstantiationException ex) {
+                 Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        
+        
+        }
+        
+    }//GEN-LAST:event_jBExcluirActionPerformed
+
+    private void jTBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTBEditarActionPerformed
+        if(jTBEditar.isSelected() == true) {
+        try {
+            listarUsuarios();
+            this.setSize(364, 550);
+        } catch (SQLException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }else{
+         this.setSize(364, 425);
+         limparCampos();
+        }
+    }//GEN-LAST:event_jTBEditarActionPerformed
 
     /**
          * @param args the command line arguments
@@ -623,7 +673,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCadastrarCadastrar;
     private javax.swing.JButton jBCadastrarLimpar;
-    private javax.swing.JButton jBEditar;
+    private javax.swing.JButton jBExcluir;
     private javax.swing.JButton jBLogar;
     private javax.swing.JButton jBSalvarEditar;
     private javax.swing.JComboBox<String> jCBCidades;
@@ -641,6 +691,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPFCadastrarSenha;
     private javax.swing.JRadioButton jRBFeminino;
     private javax.swing.JRadioButton jRBMasculino;
+    private javax.swing.JToggleButton jTBEditar;
     private javax.swing.JTextField jTFCadastrarEndereco;
     private javax.swing.JTextField jTFCadastrarNome;
     // End of variables declaration//GEN-END:variables

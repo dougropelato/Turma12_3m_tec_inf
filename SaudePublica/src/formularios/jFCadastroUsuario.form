@@ -72,8 +72,8 @@
                               <Component id="jPFCadastrarSenha" min="-2" pref="123" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
-                              <Component id="jBEditar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                              <Component id="jTBEditar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jBCadastrarLimpar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
@@ -90,10 +90,12 @@
                               <Component id="jCBEditarUsuario" min="-2" pref="282" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jBExcluir" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jBSalvarEditar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -162,7 +164,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jBCadastrarLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jBEditar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTBEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jBCadastrarCadastrar" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -174,7 +176,10 @@
                   <Component id="jLCod_humano" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jBSalvarEditar" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jBSalvarEditar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -289,7 +294,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBSalvarEditar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Salvar"/>
+        <Property name="text" type="java.lang.String" value="Alterar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSalvarEditarActionPerformed"/>
@@ -321,14 +326,6 @@
         <Property name="text" type="java.lang.String" value="Editar Usu&#xe1;rio"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jBEditar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Editar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBEditarActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="jBLogar">
       <Properties>
         <Property name="text" type="java.lang.String" value="X"/>
@@ -341,6 +338,22 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="COD"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jBExcluir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Excluir"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBExcluirActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="jTBEditar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Editar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTBEditarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
