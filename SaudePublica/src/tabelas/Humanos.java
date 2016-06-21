@@ -108,8 +108,4 @@ public class Humanos {
         this.Cod_cidade = Cod_cidade;
     }
 
-    /**
-     * @return the Cod_cidade
-     */
-    
-}
+    }

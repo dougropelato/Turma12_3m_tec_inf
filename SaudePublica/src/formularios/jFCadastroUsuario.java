@@ -24,8 +24,9 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
      */
     public jFCadastroUsuario() {
         initComponents();
+        jBEditar.setVisible(false);
         setLocationRelativeTo(null);
-        this.setSize(364, 415);
+        this.setSize(364, 425);
         try {
             listarEstados();
         } catch (SQLException ex) {
@@ -74,6 +75,8 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         jCBEditarUsuario = new javax.swing.JComboBox<>();
         jLAlterar = new javax.swing.JLabel();
         jBEditar = new javax.swing.JButton();
+        jBLogar = new javax.swing.JButton();
+        jLCod_humano = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -127,6 +130,11 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         jRBFeminino.setText("Feminino");
 
         jBSalvarEditar.setText("Salvar");
+        jBSalvarEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalvarEditarActionPerformed(evt);
+            }
+        });
 
         jCBEditarUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jCBEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +152,15 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                 jBEditarActionPerformed(evt);
             }
         });
+
+        jBLogar.setText("X");
+        jBLogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLogarActionPerformed(evt);
+            }
+        });
+
+        jLCod_humano.setText("COD");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,13 +215,19 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                                 .addGap(32, 32, 32)
                                 .addComponent(jLAlterar))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(64, 64, 64)
+                                .addGap(12, 12, 12)
+                                .addComponent(jLCod_humano)
+                                .addGap(18, 18, 18)
                                 .addComponent(jCBEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 8, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jBSalvarEditar)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jBLogar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,7 +268,9 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addComponent(jLCadastrarSenha))
                     .addComponent(jPFCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
+                .addGap(24, 24, 24)
+                .addComponent(jBLogar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBCadastrarLimpar)
@@ -254,7 +279,9 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jLAlterar)
                 .addGap(18, 18, 18)
-                .addComponent(jCBEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCBEditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLCod_humano))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBSalvarEditar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -385,7 +412,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
         try {
             listarUsuarios();
-            this.setSize(364, 540);
+            this.setSize(364, 550);
         } catch (SQLException ex) {
             Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -407,7 +434,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         if (jCBEditarUsuario.getSelectedItem() != null) {
 
             String pos = (String) (jCBEditarUsuario.getSelectedItem());
-            System.out.println("eee"+pos);
+
             GenericDao dao;
             try {
                 dao = new GenericDao();
@@ -415,7 +442,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                 List users = dao.listar(Humanos.class);
 
                 List<Humanos> lista = users;
-                System.out.println("lista size: "+lista.size());
+
                 for (int i = 0; i < lista.size(); i++) {
 
                     Humanos hum = new Humanos();
@@ -426,6 +453,54 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
                         limparCampos();
 
                         jTFCadastrarNome.setText(hum.getNome());
+                        jTFCadastrarEndereco.setText(hum.getEndereco());
+                        if (hum.getGenero().equals("m")) {
+                            jRBMasculino.setSelected(true);
+
+                        } else {
+                            jRBFeminino.setSelected(true);
+                        }
+                        jPFCadastrarSenha.setText(hum.getSenha());
+                        System.out.println("cod: " + hum.getCod_humanos());
+                        int exb_cod = hum.getCod_humanos();
+                        jLCod_humano.setText(Integer.toString(hum.getCod_humanos()));
+
+                        int cod_cidade = hum.getCod_cidade();
+
+                        GenericDao daocd = new GenericDao();
+                        List cids = daocd.listar(cidade.class);
+                        List<cidade> listacd = cids;
+                        String nome_cidadee = "";
+                        int cod_estadoo = 0;
+                        for (int x = 0; x < listacd.size(); x++) {
+                            cidade cidf = new cidade();
+                            cidf = listacd.get(x);
+                            int cod_cidadee = cidf.getCod_cidade();
+
+                            if (cod_cidadee == cod_cidade) {
+                                nome_cidadee = cidf.getNome_cidade();
+                                cod_estadoo = cidf.getCod_estado();
+// jCBCidades.getModel().setSelectedItem(cidf.getNome_cidade());
+                            }
+                        }
+
+                        GenericDao daoet = new GenericDao();
+                        List est1 = daoet.listar(estado.class);
+                        List<estado> listaest = est1;
+                        String nome_est = "";
+                        for (int y = 0; y < listaest.size(); y++) {
+                            estado estss = new estado();
+                            estss = listaest.get(y);
+                            int cod_est = estss.getCod_estado();
+
+                            if (cod_est == cod_estadoo) {
+                                nome_est = estss.getUF();
+                                // int cod_estadoo = cidf.getCod_estado();
+// jCBCidades.getModel().setSelectedItem(cidf.getNome_cidade());
+                            }
+                        }
+                        jCBEstados.getModel().setSelectedItem(nome_est);
+                        jCBCidades.getModel().setSelectedItem(nome_cidadee);
 
                     }
                 }
@@ -448,6 +523,68 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jCBEditarUsuarioActionPerformed
+
+    private void jBLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLogarActionPerformed
+        jBEditar.setVisible(true);
+    }//GEN-LAST:event_jBLogarActionPerformed
+
+    private void jBSalvarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarEditarActionPerformed
+
+        String gen;
+
+        if (jRBMasculino.isSelected() == true || jRBFeminino.isSelected() == true) {
+
+            if (jRBMasculino.isSelected() == true) {
+                gen = "m";
+            } else {
+                gen = "f";
+            }
+        } else {
+            gen = "na";
+        }
+
+        String conf_nome = jTFCadastrarNome.getText();
+        String conf_ende = jTFCadastrarEndereco.getText();
+        String conf_senha = jPFCadastrarSenha.getText();
+
+        if ((!conf_nome.equals("")) && (!conf_ende.equals("")) && (!conf_senha.equals("")) && (!gen.equals("na"))) {
+
+            try {
+                GenericDao gdAlt = new GenericDao();
+
+                Humanos hum_alt = new Humanos();
+
+                hum_alt.setCod_humanos(Integer.parseInt(jLCod_humano.getText()));
+                hum_alt.setNome(jTFCadastrarNome.getText());
+                hum_alt.setEndereco(jTFCadastrarEndereco.getText());
+                hum_alt.setRanking(0); // verificar
+                hum_alt.setGenero(gen);
+                hum_alt.setSenha(jPFCadastrarSenha.getText());
+
+                String nome_cf = String.valueOf(jCBCidades.getSelectedItem());
+
+                hum_alt.setCod_cidade(buscarCodCidade(nome_cf));
+
+                gdAlt.alterar(hum_alt);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(jFCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }//GEN-LAST:event_jBSalvarEditarActionPerformed
 
     /**
          * @param args the command line arguments
@@ -487,6 +624,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jBCadastrarCadastrar;
     private javax.swing.JButton jBCadastrarLimpar;
     private javax.swing.JButton jBEditar;
+    private javax.swing.JButton jBLogar;
     private javax.swing.JButton jBSalvarEditar;
     private javax.swing.JComboBox<String> jCBCidades;
     private javax.swing.JComboBox<String> jCBEditarUsuario;
@@ -498,6 +636,7 @@ public class jFCadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLCadastrarSenha;
     private javax.swing.JLabel jLCadastrarUF;
     private javax.swing.JLabel jLCadastrarUsuario;
+    private javax.swing.JLabel jLCod_humano;
     private javax.swing.JLabel jLGenero;
     private javax.swing.JPasswordField jPFCadastrarSenha;
     private javax.swing.JRadioButton jRBFeminino;

@@ -147,11 +147,14 @@ public class GenericDao {
             }
         }
         String sql = "UPDATE " + tabela + " SET " + campos + " WHERE " + lugar + "";
-        //  PreparedStatement stmt = conexao.prepareCall(sql);
-        System.out.println(sql);
-        //  stmt.execute();
-        //  stmt.close();
-        //  System.out.println("Registro Alterado!!!");
+          PreparedStatement stmt = conexao.prepareCall(sql);
+        //System.out.println(sql);
+         stmt.execute();
+          stmt.close();
+          System.out.println("Registro Alterado!!!");
+    if (classe == "tabelas.Humanos") {
+            JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso !");
+        }
     }
 
     public void excluir(Object obj) throws ClassNotFoundException,
