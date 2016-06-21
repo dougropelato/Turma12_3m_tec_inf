@@ -9,9 +9,9 @@ package tabelas;
  *
  * @author Fernando
  */
-public class NumeroCidade {
+public class Contagem {
     private int numero;
-    private String nome_cidade;
+    private String nome;
 
     /**
      * @return the numero
@@ -31,13 +31,13 @@ public class NumeroCidade {
      * @return the nome_cidade
      */
     public String getNome_cidade() {
-        return nome_cidade;
+        return nome;
     }
 
     /**
      * @param nome_cidade the nome_cidade to set
      */
     public void setNome_cidade(String nome_cidade) {
-        this.nome_cidade = nome_cidade;
+        this.nome = nome_cidade;
     }
 }

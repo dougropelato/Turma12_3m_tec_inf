@@ -21,7 +21,7 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import tabelas.Humanos;
-import tabelas.NumeroCidade;
+import tabelas.Contagem;
 import tabelas.cidade;
 
 /**
@@ -178,8 +178,8 @@ public class jFGrafico extends javax.swing.JFrame {
      List<cidade> todasCidades = cidade;          // Lista criada para poder referenciar um objeto e usar as informaçoes da lista cidade
      
      List<cidade> cidadesUsadas = new ArrayList();
-     List<NumeroCidade> contagemCidades = new ArrayList();
-     List<NumeroCidade> ordemGrafico = new ArrayList();
+     List<Contagem> contagemCidades = new ArrayList();
+     List<Contagem> ordemGrafico = new ArrayList();
      
 // Esse for tem como objetivo descobrir quais as cidades que "nao" tem seu codigo usado/referenciado na tabela Alunos, deixando as que tem referencia em uma List
      for (int i = 0; i < Teste.size(); i++) { 
@@ -200,7 +200,7 @@ public class jFGrafico extends javax.swing.JFrame {
     
     // Esse for tem como objetivo contar "quantas" vezes cada cidade foi referenciada na tabela Alunos e guarda as informação em uma List 
      for (int i = 0; i < todasCidades.size(); i++) { 
-         NumeroCidade numero;                        /* instancia um objeto do tipo NumeroCidade, objeto tal que foi criado manualmente para 
+         Contagem numero;                        /* instancia um objeto do tipo NumeroCidade, objeto tal que foi criado manualmente para 
                    esse método e contem os parametros numero e nome onde serao colocados o nome da cidade e quantas vezes cada uma foi usada */
          cidade cidades = todasCidades.get(i);
           int contar = 0; 
@@ -210,7 +210,7 @@ public class jFGrafico extends javax.swing.JFrame {
                  contar++; //variavel ira conter quantas vezes a cidade foi usada
                 }
             }
-           numero = new NumeroCidade();
+           numero = new Contagem();
            numero.setNumero(contar);                            
            numero.setNome_cidade(cidades.getNome_cidade());
            contagemCidades.add(numero);                                              
@@ -220,7 +220,7 @@ public class jFGrafico extends javax.swing.JFrame {
      
      // esse for tem como objetivo colocar as cidades em sequencia da maior para a menor no grafico 
       for (int s = 0; s < numeroCidades; s++) { //  esse for define quantas cidades irao estar no  grafico
-          NumeroCidade teste;
+          Contagem teste;
           int aux = 0;
           int pegarLinha = 0;
         
@@ -229,7 +229,7 @@ public class jFGrafico extends javax.swing.JFrame {
                  teste = contagemCidades.get(i);
                   if (aux < teste.getNumero() ) { // if para serve pegar sempre a cidades com maior numero(vezes referenciado na tabela alunos)
                      for (int j = 0; j < ordemGrafico.size(); j++) { 
-                          NumeroCidade ordem = ordemGrafico.get(j);
+                          Contagem ordem = ordemGrafico.get(j);
                               if(teste.getNome_cidade().equals(ordem.getNome_cidade())){ //  esse if serve para descobrir se a cidade em questao ja esta adicionada na List do Grafico
                                   seila = false;
                               }
@@ -248,7 +248,7 @@ public class jFGrafico extends javax.swing.JFrame {
        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
       // esse for monta o grafico
       for (int i = 0; i < ordemGrafico.size(); i++) {
-          NumeroCidade teste = ordemGrafico.get(i);
+          Contagem teste = ordemGrafico.get(i);
           System.out.println(teste.getNome_cidade());
           int numero = teste.getNumero();
           dataset.setValue(numero, "", teste.getNome_cidade());

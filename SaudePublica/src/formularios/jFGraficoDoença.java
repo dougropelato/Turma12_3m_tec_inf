@@ -8,7 +8,9 @@ package formularios;
 import dao.GenericDao;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import tabelas.Contagem;
 import tabelas.Doencas;
 import tabelas.historico_avaliacao;
 
@@ -112,11 +114,11 @@ public void gráfico() throws SQLException, ClassNotFoundException, IllegalAcces
      List Teste = dao.listar(historico_avaliacao.class);  
      
      List Doencas = dao.listar(Doencas.class); 
-     List<Doencas> todasCidades = Doencas;          
+     List<Doencas> todasDoencas = Doencas;          
      
-     List<cidade> cidadesUsadas = new ArrayList();
-     List<NumeroCidade> contagemCidades = new ArrayList();
-     List<NumeroCidade> ordemGrafico = new ArrayList();
+     List<Doencas> doencasUsadas = new ArrayList();
+     List<Contagem> contagemCidades = new ArrayList();
+     List<Contagem> ordemGrafico = new ArrayList();
      
 // Esse for tem como objetivo descobrir quais as cidades que "nao" tem seu codigo usado/referenciado na tabela Alunos, deixando as que tem referencia em uma List
      for (int i = 0; i < Teste.size(); i++) { 
@@ -124,32 +126,32 @@ public void gráfico() throws SQLException, ClassNotFoundException, IllegalAcces
             List<historico_avaliacao> lal = Teste; //Cria uma List de tipo Alunos para poder usar o conteudo da tabela Alunos
             historico_avaliacao test = lal.get(i);
             
-            for (int j = 0; j < todasCidades.size(); j++) {  
-                cidade cidades = todasCidades.get(j);
-                if (cidades.getCod_cidade()== test.getCod_cidade()) { // Identifica a cidade que foi usada para por esse Aluno e criando um objeto o adiciona a uma List
-                    cidade guarda = new cidade();
-                    guarda.setCod_cidade(test.getCod_cidade());
-                    guarda.setNome_cidade(cidades.getNome_cidade());
-                    cidadesUsadas.add(guarda);
+            for (int j = 0; j < todasDoencas.size(); j++) {  
+                Doencas doen = todasDoencas.get(j);
+                if (doen.getcod_doenca()== test.getCod_doenca()) { // Identifica a cidade que foi usada para por esse Aluno e criando um objeto o adiciona a uma List
+                    Doencas guarda = new Doencas();
+                    guarda.setcod_doenca(test.getCod_doenca());
+                    guarda.setnome_doenca(doen.getnome_doenca());
+                    doencasUsadas.add(guarda);
                 }
             }
         }
     
     // Esse for tem como objetivo contar "quantas" vezes cada cidade foi referenciada na tabela Alunos e guarda as informação em uma List 
-     for (int i = 0; i < todasCidades.size(); i++) { 
-         NumeroCidade numero;                        /* instancia um objeto do tipo NumeroCidade, objeto tal que foi criado manualmente para 
+     for (int i = 0; i < todasDoencas.size(); i++) { 
+         Contagem numero;                        /* instancia um objeto do tipo NumeroCidade, objeto tal que foi criado manualmente para 
                    esse método e contem os parametros numero e nome onde serao colocados o nome da cidade e quantas vezes cada uma foi usada */
-         cidade cidades = todasCidades.get(i);
+         Doencas todas = todasDoencas.get(i);
           int contar = 0; 
-            for (int j = 0; j < cidadesUsadas.size(); j++) {
-                cidade usadas = cidadesUsadas.get(j);
-                if (usadas.getCod_cidade() == cidades.getCod_cidade()) { // alimenta a variavel cada vez que a cidade encontrada for encontrada
+            for (int j = 0; j < doencasUsadas.size(); j++) {
+                Doencas usadas = doencasUsadas.get(j);
+                if (usadas.getcod_doenca() == todas.getcod_doenca()) { // alimenta a variavel cada vez que a cidade encontrada for encontrada
                  contar++; //variavel ira conter quantas vezes a cidade foi usada
                 }
             }
-           numero = new NumeroCidade();
+           numero = new Contagem();
            numero.setNumero(contar);                            
-           numero.setNome_cidade(cidades.getNome_cidade());
+           numero.setNome_cidade(todas.getnome_doenca());
            contagemCidades.add(numero);                                              
     }
      
