@@ -6,6 +6,7 @@
 package formularios;
 
 import dao.GenericDao;
+import java.awt.event.ActionEvent;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.List;
@@ -21,7 +22,7 @@ import tabelas.sintomas;
  */
 public class JFConsultaSintomas extends javax.swing.JFrame {
 
-    DefaultTableModel dtmTabela = new DefaultTableModel(null, new String[]{"Codigo", "Nome",});
+    DefaultTableModel dtmTabela = new DefaultTableModel(null, new String[]{"Codigo", "Nome","Descricao"});
 
     public JFConsultaSintomas() throws SQLException, ClassNotFoundException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, InstantiationException {
         initComponents();
@@ -39,9 +40,9 @@ public class JFConsultaSintomas extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTConsulta = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBEditar = new javax.swing.JButton();
+        jBExcluir = new javax.swing.JButton();
+        jBCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,11 +60,16 @@ public class JFConsultaSintomas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTConsulta);
 
-        jButton1.setText("Editar");
+        jBEditar.setText("Editar");
 
-        jButton2.setText("Excluir");
+        jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluirActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Cancelar");
+        jBCancelar.setText("Cancelar");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Sintomas");
@@ -80,11 +86,11 @@ public class JFConsultaSintomas extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
@@ -97,14 +103,23 @@ public class JFConsultaSintomas extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jBEditar)
+                    .addComponent(jBExcluir)
+                    .addComponent(jBCancelar))
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+            
+             
+          
+        
+              
+           
+    }//GEN-LAST:event_jBExcluirActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -155,9 +170,9 @@ public class JFConsultaSintomas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBEditar;
+    private javax.swing.JButton jBExcluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTConsulta;
@@ -183,10 +198,12 @@ public class JFConsultaSintomas extends javax.swing.JFrame {
                 sintomas se = (sintomas) lista.get(i);
                 dtmTabela.setValueAt(se.getCod_sintoma(), i, 0);
                 dtmTabela.setValueAt(se.getNome_sintoma(), i, 1);
-                //dtmTabela.setValueAt(pe.getDescricao(), i, 2);
+                dtmTabela.setValueAt(se.getDescricao(), i, 2);
 
             }
             jTConsulta.setModel(dtmTabela);
         }
     }
+   
 }
+

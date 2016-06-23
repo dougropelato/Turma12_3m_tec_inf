@@ -249,9 +249,19 @@ public class GenericDao {
             sintomas p = new sintomas();
             p.setCod_sintoma(rs.getInt("cod_sintoma"));
             p.setNome_sintoma(rs.getString("nome_sintoma"));
+            p.setDescricao(rs.getString("descricao"));
             lista.add(p);
         }
         rs.close();
         return lista;
     }
+    public void excluir1(sintomas p) throws SQLException {
+        String sql = "DELETE FROM pessoas WHERE codigo_pessoa=?";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setInt(1, p.getCod_sintoma());
+        stmt.execute();
+        stmt.close();
+        System.out.println("Registro excluído no banco!");
+    }
+  
 }
