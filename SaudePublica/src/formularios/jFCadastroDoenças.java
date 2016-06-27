@@ -6,6 +6,7 @@
 package formularios;
 
 import dao.GenericDao;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -80,6 +81,11 @@ public class jFCadastroDoenças extends javax.swing.JFrame {
         jButton4.setText("Cancelar");
 
         jButton5.setText("Consultar Doenças");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,6 +177,27 @@ public class jFCadastroDoenças extends javax.swing.JFrame {
             Logger.getLogger(jFCadastroDoenças.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }//GEN-LAST:event_bTcadastrarActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        try {
+            jFConsultaDoenças j = new jFConsultaDoenças();
+            j.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(jFCadastroDoenças.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(jFCadastroDoenças.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(jFCadastroDoenças.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(jFCadastroDoenças.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(jFCadastroDoenças.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(jFCadastroDoenças.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(jFCadastroDoenças.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
