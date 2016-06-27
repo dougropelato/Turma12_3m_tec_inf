@@ -147,12 +147,12 @@ public class GenericDao {
             }
         }
         String sql = "UPDATE " + tabela + " SET " + campos + " WHERE " + lugar + "";
-          PreparedStatement stmt = conexao.prepareCall(sql);
+        PreparedStatement stmt = conexao.prepareCall(sql);
         //System.out.println(sql);
-         stmt.execute();
-          stmt.close();
-          System.out.println("Registro Alterado!!!");
-    if (classe == "tabelas.Humanos") {
+        stmt.execute();
+        stmt.close();
+        System.out.println("Registro Alterado!!!");
+        if (classe == "tabelas.Humanos") {
             JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso !");
         }
     }
@@ -196,6 +196,9 @@ public class GenericDao {
         stmt.execute();
         stmt.close();
         System.out.println("Registro EXCLUÍDO no banco!");
+        if (classe == "tabelas.Humanos") {
+            JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso !");
+        }
     }
 
     public void criaTabela() {
