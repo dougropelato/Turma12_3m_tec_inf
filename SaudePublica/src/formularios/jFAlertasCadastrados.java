@@ -91,12 +91,13 @@ public class jFAlertasCadastrados extends javax.swing.JFrame {
             GenericDao d = new GenericDao();
             Alertas a = new Alertas();
            
-            int linha= jTableAlertas. getSelectedRow();
-            
-            a.setCod_alerta((int) jTableAlertas.getValueAt(linha, 0));
+            int linha = jTableAlertas. getSelectedRow();
+            int cod = Integer.parseInt(jTableAlertas.getValueAt(linha, 0).toString());
+                    
+            a.setCod_alerta(cod);
             a.setDescricao((String) jTableAlertas.getValueAt(linha, 1));
             a.setCor_alerta((String) jTableAlertas.getValueAt(linha, 2));
-            
+           // System.out.println(jTableAlertas.getValueAt(linha, 0));
             d.alterar(a);
         } catch (SQLException ex) {
             Logger.getLogger(jFAlertasCadastrados.class.getName()).log(Level.SEVERE, null, ex);
