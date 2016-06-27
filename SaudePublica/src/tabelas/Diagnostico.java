@@ -47,6 +47,7 @@ public class Diagnostico extends javax.swing.JFrame {
      */
     public Diagnostico() {
         initComponents();
+        this.setLocationRelativeTo(this);
 
     }
     private Connection Conexao;
